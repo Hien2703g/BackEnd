@@ -1,6 +1,7 @@
 extends ../../layouts/default.pug
 include ../../mixins/filterStatus.pug
 include ../../mixins/search.pug
+include ../../mixins/pagitation.pug
 
 block main 
     h1 Danh sách sản phẩm
@@ -55,18 +56,4 @@ block main
                             td 
                                 button(class="btn btn-warning btn-sm") Sửa
                                 button(class="btn btn-danger btn-sm ml-1") Xóa
-    nav 
-        ul(class="pagination")
-            //- li(class="page-item")
-            //-     button(class="page-link") Trang trước
-            //- div #{pagitation.totalPage}
-            - for(var i=1;i<=pagitation.totalPage;i++)
-                li(class=`page-item  ${pagitation.currentPage == i ? "active":""}`)
-                    button(
-                        class="page-link" 
-                        button-pagination=i
-                    ) #{i}
-            
-            //- li(class="page-item")
-            //-     button(class="page-link") Kế tiếp
-    //- div #{pagitation.totalPage} hees
+    +Pagitation(pagitation)  
