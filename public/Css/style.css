@@ -1,0 +1,144 @@
+.test {
+  color: salmon;
+}
+* {
+  font-family: "Roboto", sans-serif;
+  font-optical-sizing: auto;
+}
+
+/*Header*/
+.header {
+  border-bottom: 2px solid #ddd;
+  padding: 10px 0;
+}
+.header .inner-logo img {
+  max-width: 50px;
+  max-height: auto;
+  border: 2px solid black;
+  border-radius: 15px;
+}
+
+.header .inner-menu ul {
+  list-style: none;
+  /* mặc định menu có chấm, none xóa chấm */
+  padding: 0;
+  margin: 0;
+  display: flex;
+  /* các item trên cùng 1 hàng */
+  align-items: center;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  /* /Các item tự động xuống dòng nếu hết dòng> */
+}
+
+.header .inner-menu > ul > li {
+  margin-left: 20px;
+}
+
+.header .inner-menu > ul > li > a {
+  text-decoration: none;
+  /* Loai bo gach chan mac dinh */
+  font-size: 25px;
+  color: #3a7df1;
+  font-weight: bold;
+}
+.header .inner-menu > ul > li > a:hover {
+  color: #32bce6;
+  text-decoration: underline;
+}
+/* box head */
+.box-head {
+  margin-bottom: 30px;
+}
+.box-head .inner-title {
+  text-align: center;
+  margin-bottom: 0;
+  font-size: 35px;
+  font-weight: 600;
+  color: rgb(0, 183, 255);
+}
+/* end box-head */
+
+/* product-item */
+.product-item {
+  border: 5px solid #ddd;
+  border-radius: 8px;
+  height: 100%;
+  overflow: hidden;
+}
+
+.product-item .inner-image {
+  width: 100%;
+  aspect-ratio: 4/3;
+  /* Ty le khung hinh */
+  border-bottom: 5px solid #ddd;
+  position: relative;
+}
+
+.product-item .inner-image .img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.product-item .inner-content {
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.product-item .inner-content .inner-price-new {
+  color: green;
+}
+.product-item .inner-content .inner-price-old {
+  color: gray;
+  text-decoration: line-through;
+}
+.product-item .inner-content .inner-discount {
+  color: white;
+  background-color: rgb(255, 0, 0);
+  padding: 5px 10px;
+  border-radius: 5px;
+  display: flex;
+  max-width: fit-content;
+  /* Vừa content bên trong */
+}
+
+/* sub-menu */
+.sub-menu {
+  position: relative;
+  z-index: 999;
+}
+
+.sub-menu ul {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: #eae9e9;
+  min-width: 180px;
+  display: none;
+}
+
+.sub-menu ul li {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.sub-menu:hover > ul {
+  display: block;
+}
+
+.sub-menu ul li {
+  position: relative;
+}
+
+.sub-menu ul li ul {
+  right: 100%;
+  top: 0;
+}
+
+.sub-menu ul li:hover > ul {
+  display: block;
+}
+/* end sub menu */
