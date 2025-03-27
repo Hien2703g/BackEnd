@@ -52,15 +52,14 @@ module.exports.index = async (req, res) => {
 
 // [PATCH]/admin/products/change-status/:status/:id
 module.exports.changeStatus = async (req, res) => {
-  console.log(req.params);
+  // console.log(req.params);
   const status = req.params.status;
   const id = req.params.id;
-
   await Product.updateOne({ _id: id }, { status: status });
   res.redirect("back");
 };
 
-// [PATCH] / admin / products / change - multi;
+// [PATCH] /admin /products/change - multi;
 module.exports.changeMulti = async (req, res) => {
   const type = req.body.type;
   const ids = req.body.ids.split(", ");
@@ -84,10 +83,28 @@ module.exports.changeMulti = async (req, res) => {
         { status: "inactive" }
       );
       break;
+    case "delete-all":
+      await Product.updateMany(
+        {
+          _id: { $in: ids },
+        },
+        { deleted: true, deletedAt: new Date() }
+      );
+      break;
     default:
       break;
   }
   // console.log(type);
   // console.log(ids);
+  res.redirect("back");
+};
+// [DELETE] /admin/products/Delete;
+module.exports.deleteItem = async (req, res) => {
+  const id = req.params.id;
+  // await Product.deleteOne({ _id: id });
+  await Product.updateOne(
+    { _id: id },
+    { deleted: true, deletedAt: new Date() }
+  );
   res.redirect("back");
 };

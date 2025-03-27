@@ -103,6 +103,14 @@ if (formChangeMulti) {
     const inputsChecked = checkboxMulti.querySelectorAll(
       "input[name='id']:checked"
     );
+    const typeChange = e.target.elements.type.value;
+    console.log(typeChange);
+    if (typeChange == "delete-all") {
+      const isComfirm = confirm(" Ban co chac muon xoa tat ca khong");
+      if (!isComfirm) {
+        return;
+      }
+    }
     // console.log(inputsChecked);
     if (inputsChecked.length > 0) {
       let ids = [];
