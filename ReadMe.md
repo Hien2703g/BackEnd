@@ -39,3 +39,15 @@ $set:{visibility: your}
 multi:true
 }
 )
+● Hiển thị thông báo ở express: express-flash
+https://www.npmjs.com/package/express-flash
+
+● Create:
+
+- Timestamps:(Mongoose)
+
+● Mongoose-slug-updater:
+https://www.npmjs.com/package/mongoose-slug-updater
+
+● Upload ảnh:<multer>
+https://www.npmjs.com/package/multer

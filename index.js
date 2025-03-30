@@ -1,12 +1,22 @@
 const express = require("express");
 require("dotenv").config();
 
+const multer = require("multer");
+
+const flash = require("express-flash");
 const database = require("./config/database");
+
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
 
 const systemConfig = require("./config/system");
 const bodyParser = require("body-parser");
 const app = express();
 
+//flash
+app.use(cookieParser("keyboard cat"));
+app.use(session({ cookie: { maxAge: 60000 } }));
+app.use(flash());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/x-www-form-urlencoded
