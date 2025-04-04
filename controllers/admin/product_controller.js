@@ -148,7 +148,7 @@ module.exports.create = async (req, res) => {
 //[POST] admin/products/create
 module.exports.createPost = async (req, res) => {
   // console.log(req.body);
-  console.log(req.file);
+  // console.log(req.file);
   req.body.price = parseInt(req.body.price);
   req.body.discountPercentage = parseInt(req.body.discountPercentage);
   req.body.stock = parseInt(req.body.price);
@@ -158,8 +158,72 @@ module.exports.createPost = async (req, res) => {
   } else {
     req.body.position = parseInt(req.body.position);
   }
-  req.body.thumbnail = `/uploads/${req.file.filename}`;
+  if (req.file) {
+    req.body.thumbnail = `/uploads/${req.file.filename}`;
+  }
   const product = new Product(req.body);
   await product.save();
   res.redirect(`${systemConfig.prefixAdmin}/products`);
+};
+//[POST] admin/products/edit
+module.exports.edit = async (req, res) => {
+  try {
+    const find = {
+      deleted: false,
+      _id: req.params.id,
+    };
+    const product = await Product.findOne(find);
+    // console.log(product);
+    res.render("admin/pages/products/edit", {
+      pageTitle: "Chinh sua mot san pham",
+      product: product,
+    });
+  } catch (error) {
+    req.flash("error", `Sản phẩm không tồn tại`);
+    res.redirect(`${systemConfig.prefixAdmin}/products`);
+  }
+};
+//[PATCH] admin/products/edit/:id
+module.exports.editPatch = async (req, res) => {
+  // console.log(req.body);
+  // res.send("OK");
+  const id = req.params.id;
+  req.body.price = parseInt(req.body.price);
+  req.body.discountPercentage = parseInt(req.body.discountPercentage);
+  req.body.stock = parseInt(req.body.price);
+  req.body.position = parseInt(req.body.position);
+  if (req.file) {
+    req.body.thumbnail = `/uploads/${req.file.filename}`;
+  }
+  try {
+    await Product.updateOne(
+      {
+        _id: id,
+      },
+      req.body
+    );
+    req.flash("success", `Sản phẩm đã cập nhập thành công`);
+  } catch (error) {
+    req.flash("error", `Sản phẩm cập nhật thất bại`);
+  }
+  res.redirect("back");
+};
+
+//[POST] admin/products/detail
+module.exports.detail = async (req, res) => {
+  try {
+    const find = {
+      deleted: false,
+      _id: req.params.id,
+    };
+    const product = await Product.findOne(find);
+    // console.log(product);
+    res.render("admin/pages/products/detail", {
+      pageTitle: product.title,
+      product: product,
+    });
+  } catch (error) {
+    req.flash("error", `Sản phẩm không tồn tại`);
+    res.redirect(`${systemConfig.prefixAdmin}/products`);
+  }
 };

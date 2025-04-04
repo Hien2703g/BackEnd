@@ -1,0 +1,1000 @@
+[{
+  "_id": {
+    "$oid": "6610b9f71ac22ae1c4426f29"
+  },
+  "title": "iPhone 9",
+  "description": "An apple mobile which is nothing like apple",
+  "price": 549,
+  "discountPercentage": 12,
+  "rating": 4.69,
+  "stock": 94,
+  "brand": "Apple",
+  "category": "smartphones",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/1/thumbnail.jpg",
+  "status": "inactive",
+  "deleted": true,
+  "position": 3,
+  "updatedAt": {
+    "$date": "2024-05-23T05:20:55.023Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6610b9f71ac22ae1c4426f2a"
+  },
+  "title": "iPhone X",
+  "description": "SIM-Free, Model A19211 6.5-inch Super Retina HD display with OLED technology A12 Bionic chip with ...",
+  "price": 899,
+  "discountPercentage": 17,
+  "rating": 4.44,
+  "stock": 34,
+  "brand": "Apple",
+  "category": "smartphones",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/2/thumbnail.jpg",
+  "status": "inactive",
+  "deleted": true,
+  "deleteAt": {
+    "$date": "2024-04-23T23:37:00.038Z"
+  },
+  "position": 1,
+  "updatedAt": {
+    "$date": "2024-05-23T05:20:55.023Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6610b9f71ac22ae1c4426f2b"
+  },
+  "title": "Samsung Universe 9",
+  "description": "Samsung's new variant which goes beyond Galaxy to the Universe",
+  "price": 1249,
+  "discountPercentage": 15.46,
+  "rating": 4.09,
+  "stock": 36,
+  "brand": "Samsung",
+  "category": "smartphones",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/3/thumbnail.jpg",
+  "status": "active",
+  "deleted": true,
+  "position": 3
+},
+{
+  "_id": {
+    "$oid": "6610b9f71ac22ae1c4426f2c"
+  },
+  "title": "OPPOF19",
+  "description": "OPPO F19 is officially announced on April 2021.",
+  "price": 280,
+  "discountPercentage": 17.91,
+  "rating": 4.3,
+  "stock": 123,
+  "brand": "OPPO",
+  "category": "smartphones",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/4/thumbnail.jpg",
+  "status": "active",
+  "deleted": true,
+  "deleteAt": {
+    "$date": "2024-04-23T23:37:00.038Z"
+  },
+  "position": 7,
+  "updatedAt": {
+    "$date": "2024-05-23T05:20:55.023Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6610b9f71ac22ae1c4426f2d"
+  },
+  "title": "Huawei P30",
+  "description": "Huawei’s re-badged P30 Pro New Edition was officially unveiled yesterday in Germany and now the device has made its way to the UK.",
+  "price": 499,
+  "discountPercentage": 10.58,
+  "rating": 4.09,
+  "stock": 32,
+  "brand": "Huawei",
+  "category": "smartphones",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/5/thumbnail.jpg",
+  "status": "inactive",
+  "deleted": true,
+  "position": 9,
+  "updatedAt": {
+    "$date": "2024-05-23T05:20:34.273Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "6610b9f71ac22ae1c4426f2e"
+  },
+  "title": "MacBook Pro",
+  "description": "MacBook Pro 2021 with mini-LED display may launch between September, November",
+  "price": 1749,
+  "discountPercentage": 11.02,
+  "rating": 4.57,
+  "stock": 83,
+  "brand": "Apple",
+  "category": "laptops",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/6/thumbnail.png",
+  "status": "inactive",
+  "deleted": true,
+  "position": 10,
+  "updatedAt": {
+    "$date": "2024-05-23T05:20:34.273Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66194c74065a84674f9c91eb"
+  },
+  "title": "Samsung Galaxy Book",
+  "description": "Samsung Galaxy Book S (2020) Laptop With Intel Lakefield Chip, 8GB of RAM Launched",
+  "price": 1499,
+  "discountPercentage": 4.15,
+  "rating": 4.25,
+  "stock": 50,
+  "brand": "Samsung",
+  "category": "laptops",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/7/thumbnail.jpg",
+  "status": "active",
+  "deleted": true,
+  "position": 15,
+  "updatedAt": {
+    "$date": "2024-05-23T05:19:31.400Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66194c74065a84674f9c91ec"
+  },
+  "title": "Microsoft Surface Laptop 4",
+  "description": "Style and speed. Stand out on HD video calls backed by Studio Mics. Capture ideas on the vibrant touchscreen.",
+  "price": 1499,
+  "discountPercentage": 10.23,
+  "rating": 4.43,
+  "stock": 68,
+  "brand": "Microsoft Surface",
+  "category": "laptops",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/8/thumbnail.jpg",
+  "status": "active",
+  "deleted": true,
+  "position": 12,
+  "updatedAt": {
+    "$date": "2024-05-23T05:20:34.273Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66194c74065a84674f9c91ed"
+  },
+  "title": "Infinix INBOOK",
+  "description": "Infinix Inbook X1 Ci3 10th 8GB 256GB 14 Win10 Grey – 1 Year Warranty",
+  "price": 1099,
+  "discountPercentage": 11.83,
+  "rating": 4.54,
+  "stock": 96,
+  "brand": "Infinix",
+  "category": "laptops",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/9/thumbnail.jpg",
+  "status": "active",
+  "deleted": true,
+  "position": 18,
+  "deletedBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "deletedAt": {
+      "$date": "2024-05-23T05:19:00.681Z"
+    }
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:19:00.683Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66194c74065a84674f9c91ee"
+  },
+  "title": "HP Pavilion 15-DK1056WM",
+  "description": "HP Pavilion 15-DK1056WM Gaming Laptop 10th Gen Core i5, 8GB, 256GB SSD, GTX 1650 4GB, Windows 10",
+  "price": 1099,
+  "discountPercentage": 6.18,
+  "rating": 4.43,
+  "stock": 89,
+  "brand": "HP Pavilion",
+  "category": "laptops",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/10/thumbnail.jpeg",
+  "status": "active",
+  "deleted": true,
+  "position": 16,
+  "updatedAt": {
+    "$date": "2024-05-23T05:19:31.400Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66194c74065a84674f9c91ef"
+  },
+  "title": "perfume Oil",
+  "description": "Mega Discount, Impression of Acqua Di Gio by GiorgioArmani concentrated attar perfume Oil",
+  "price": 13,
+  "discountPercentage": 8.4,
+  "rating": 4.26,
+  "stock": 65,
+  "brand": "Impression of Acqua Di Gio",
+  "category": "fragrances",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/11/thumbnail.jpg",
+  "status": "active",
+  "deleted": true,
+  "position": 13,
+  "updatedAt": {
+    "$date": "2024-05-23T05:19:31.400Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66194c74065a84674f9c91f0"
+  },
+  "title": "Brown Perfume",
+  "description": "Royal_Mirage Sport Brown Perfume for Men & Women - 120ml",
+  "price": 40,
+  "discountPercentage": 15.66,
+  "rating": 4,
+  "stock": 52,
+  "brand": "Royal_Mirage",
+  "category": "fragrances",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/12/thumbnail.jpg",
+  "status": "active",
+  "deleted": true,
+  "position": 6,
+  "updatedAt": {
+    "$date": "2024-05-23T05:20:55.023Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66194c74065a84674f9c91f1"
+  },
+  "title": "Fog Scent Xpressio Perfume",
+  "description": "Product details of Best Fog Scent Xpressio Perfume 100ml For Men cool long lasting perfumes for Men",
+  "price": 13,
+  "discountPercentage": 8.14,
+  "rating": 4.59,
+  "stock": 61,
+  "brand": "Fog Scent Xpressio",
+  "category": "fragrances",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/13/thumbnail.webp",
+  "status": "active",
+  "deleted": true,
+  "position": 17,
+  "updatedAt": {
+    "$date": "2024-05-23T05:19:31.400Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66194c74065a84674f9c91f2"
+  },
+  "title": "Non-Alcoholic Concentrated Perfume Oil",
+  "description": "Original Al Munakh® by Mahal Al Musk | Our Impression of Climate | 6ml Non-Alcoholic Concentrated Perfume Oil",
+  "price": 120,
+  "discountPercentage": 15.6,
+  "rating": 4.21,
+  "stock": 114,
+  "brand": "Al Munakh",
+  "category": "fragrances",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/14/thumbnail.jpg",
+  "status": "inactive",
+  "deleted": true,
+  "position": 18,
+  "deletedBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "deletedAt": {
+      "$date": "2024-05-23T05:19:05.693Z"
+    }
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:19:05.694Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "66194c74065a84674f9c91f3"
+  },
+  "title": "Eau De Perfume Spray",
+  "description": "Genuine  Al-Rehab spray perfume from UAE/Saudi Arabia/Yemen High Quality",
+  "price": 30,
+  "discountPercentage": 10.99,
+  "rating": 4.7,
+  "stock": 105,
+  "brand": "Lord - Al-Rehab",
+  "category": "fragrances",
+  "thumbnail": "https://cdn.dummyjson.com/product-images/15/thumbnail.jpg",
+  "status": "inactive",
+  "deleted": true,
+  "position": 11,
+  "updatedAt": {
+    "$date": "2024-05-23T05:20:34.273Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "662c8ffc4b7eb50e6f22d655"
+  },
+  "title": "Lem Nhem",
+  "description": "Nhem Tổng",
+  "price": 1000,
+  "discountPercentage": 1,
+  "rating": 4.8,
+  "stock": 1,
+  "thumbnail": "/uploads/39b703945b6ab8f64528c3f2cbde3f65",
+  "status": "active",
+  "position": 19,
+  "deleted": true,
+  "createdAt": {
+    "$date": "2024-04-27T05:41:16.655Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:19:18.917Z"
+  },
+  "slug": "lem-nhem",
+  "__v": 0,
+  "brand": "",
+  "category": ""
+},
+{
+  "_id": {
+    "$oid": "663123ff92de0ae58c7816e7"
+  },
+  "title": "nhem",
+  "description": "Nhem abc",
+  "price": 10,
+  "discountPercentage": 1,
+  "rating": 4.8,
+  "stock": 13,
+  "status": "active",
+  "position": 17,
+  "deleted": true,
+  "createdAt": {
+    "$date": "2024-04-30T17:01:51.498Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:19:18.917Z"
+  },
+  "slug": "nhem",
+  "__v": 0,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1715780124/ayjrruhinbvqatfokuf1.jpg",
+  "brand": "lem nhem",
+  "category": "cao cấp"
+},
+{
+  "_id": {
+    "$oid": "66383ef12eb45399b01e3de3"
+  },
+  "title": "Khem",
+  "description": "abcxyz",
+  "price": 1000,
+  "discountPercentage": 12,
+  "rating": 4,
+  "stock": 10,
+  "thumbnail": "/uploads/1714962161464-WIN_20240302_16_07_12_Pro.jpg",
+  "status": "active",
+  "position": 17,
+  "category": "cao cấp",
+  "deleted": true,
+  "createdAt": {
+    "$date": "2024-05-06T02:22:41.498Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:19:18.917Z"
+  },
+  "slug": "khem",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664429bf2a58deb1bac73176"
+  },
+  "title": "Nhem_tong",
+  "description": "nhem",
+  "price": 0,
+  "discountPercentage": 0,
+  "rating": 0,
+  "stock": 0,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1715743165/ourvmfrtjnwaq2xvatlo.jpg",
+  "status": "active",
+  "position": 19,
+  "category": "",
+  "deleted": true,
+  "createdAt": {
+    "$date": "2024-05-15T03:19:27.663Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:19:18.917Z"
+  },
+  "slug": "nhem_tong",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664ed3ac98bc803cd82829f9"
+  },
+  "title": "Ghế basic",
+  "product_category_id": "664959e22627dcda88314686",
+  "description": "<p>Được l&agrave;m từ gỗ chất lượng cao, với thiết kết đơn giản nhưng sang trọng thu h&uacute;t &aacute;nh nh&igrave;n<br>Ngo&agrave;i ra sử dụng c&aacute;ch nối mộc đặc trưng l&agrave;m ghế th&ecirc;m vững chắc khi sử dụng.</p>",
+  "price": 10,
+  "discountPercentage": 1,
+  "stock": 34,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716442026/tgtm86bvcuhubpuhulq6.webp",
+  "status": "active",
+  "featured": "1",
+  "position": 20,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T05:27:08.328Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T05:27:08.334Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:27:08.334Z"
+  },
+  "slug": "ghe-basic",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664ed40898bc803cd8282a14"
+  },
+  "title": "Ghế basic cao cấp",
+  "product_category_id": "664959e22627dcda88314686",
+  "description": "<p>Được l&agrave;m từ gỗ chất lượng cao, với thiết kết đơn giản nhưng sang trọng thu h&uacute;t &aacute;nh nh&igrave;n Ngo&agrave;i ra sử dụng c&aacute;ch nối mộc đặc trưng l&agrave;m ghế th&ecirc;m vững chắc khi sử dụng.</p>",
+  "price": 12,
+  "discountPercentage": 2,
+  "stock": 13,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716442118/hmiao4yzvezea6edeymj.webp",
+  "status": "active",
+  "featured": "0",
+  "position": 21,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T05:28:40.021Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T05:28:40.022Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:28:40.022Z"
+  },
+  "slug": "ghe-basic-cao-cap",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664ed77798bc803cd8282a30"
+  },
+  "title": "Ghế phòng ăn",
+  "product_category_id": "664959e22627dcda88314686",
+  "description": "<p>Ghế thiết kế nhỏ gọn,sang trọng</p>",
+  "price": 10,
+  "discountPercentage": 2,
+  "stock": 50,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716442997/unxzubc5aj1oeftncbai.webp",
+  "status": "active",
+  "featured": "0",
+  "position": 22,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T05:43:19.872Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T05:43:19.873Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:43:19.873Z"
+  },
+  "slug": "ghe-phong-an",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664ed81198bc803cd8282a4d"
+  },
+  "title": "Ghế đọc sách",
+  "product_category_id": "664959e22627dcda88314686",
+  "description": "<p>Sang trọng, qu&yacute; ph&aacute;i.</p>\r\n<p>Được l&agrave;m từ gỗ chất lượng cao, với thiết kết đơn giản nhưng sang trọng thu h&uacute;t &aacute;nh nh&igrave;n Ngo&agrave;i ra sử dụng c&aacute;ch nối mộc đặc trưng l&agrave;m ghế th&ecirc;m vững chắc khi sử dụng.</p>",
+  "price": 30,
+  "discountPercentage": 5,
+  "stock": 10,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716443151/p2eiq1wjtonknxwrqpuq.webp",
+  "status": "active",
+  "position": 23,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T05:45:53.108Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T05:45:53.109Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:45:53.109Z"
+  },
+  "slug": "ghe-doc-sach",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664ed88a98bc803cd8282a6b"
+  },
+  "title": "Ghế ăn cho bé",
+  "product_category_id": "664959e22627dcda88314686",
+  "description": "<p>Ghế ăn an to&agrave;n cho b&eacute;.</p>\r\n<p>Được l&agrave;m từ gỗ chất lượng cao, với thiết kết đơn giản nhưng sang trọng thu h&uacute;t &aacute;nh nh&igrave;n Ngo&agrave;i ra sử dụng c&aacute;ch nối mộc đặc trưng l&agrave;m ghế th&ecirc;m vững chắc khi sử dụng.</p>",
+  "price": 40,
+  "discountPercentage": 3,
+  "stock": 45,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716443272/u5gyoxey6n2ybqu6yoag.jpg",
+  "status": "active",
+  "featured": "1",
+  "position": 24,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T05:47:54.112Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [
+    {
+      "account_id": "664cafe399c5ffc5bed5d468",
+      "updatedAt": {
+        "$date": "2024-05-23T05:48:14.371Z"
+      },
+      "_id": {
+        "$oid": "664ed89e98bc803cd8282a92"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-05-23T05:47:54.117Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:48:14.372Z"
+  },
+  "slug": "ghe-an-cho-be",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664ed9e098bc803cd8282ac8"
+  },
+  "title": "Ghế võng",
+  "product_category_id": "664959e22627dcda88314686",
+  "description": "<p>Được l&agrave;m từ gỗ chất lượng cao, với thiết kết đơn giản nhưng sang trọng thu h&uacute;t &aacute;nh nh&igrave;n Ngo&agrave;i ra sử dụng c&aacute;ch nối mộc đặc trưng l&agrave;m ghế th&ecirc;m vững chắc khi sử dụng.</p>",
+  "price": 60,
+  "discountPercentage": 0,
+  "stock": 13,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716443614/hqnx0eksvz1rv3kdtcrf.jpg",
+  "status": "active",
+  "featured": "1",
+  "position": 25,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T05:53:36.322Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T05:53:36.325Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:53:36.325Z"
+  },
+  "slug": "ghe-vong",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664eda1398bc803cd8282ae8"
+  },
+  "title": "ghế đẩu",
+  "product_category_id": "664959e22627dcda88314686",
+  "description": "<p>Được l&agrave;m từ gỗ chất lượng cao, với thiết kết đơn giản nhưng sang trọng thu h&uacute;t &aacute;nh nh&igrave;n Ngo&agrave;i ra sử dụng c&aacute;ch nối mộc đặc trưng l&agrave;m ghế th&ecirc;m vững chắc khi sử dụng.</p>",
+  "price": 46,
+  "discountPercentage": 13,
+  "stock": 67,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716443665/olckmldisqgmsldg6koz.jpg",
+  "status": "active",
+  "featured": "0",
+  "position": 26,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T05:54:27.324Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T05:54:27.332Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:54:27.332Z"
+  },
+  "slug": "ghe-dau",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664eda4198bc803cd8282b08"
+  },
+  "title": "Ghế võng",
+  "product_category_id": "664959e22627dcda88314686",
+  "description": "<p>Được l&agrave;m từ gỗ chất lượng cao, với thiết kết đơn giản nhưng sang trọng thu h&uacute;t &aacute;nh nh&igrave;n Ngo&agrave;i ra sử dụng c&aacute;ch nối mộc đặc trưng l&agrave;m ghế th&ecirc;m vững chắc khi sử dụng.</p>",
+  "price": 22,
+  "discountPercentage": 9,
+  "stock": 16,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716443711/kbjbmgdqjf1dgumh9eb0.webp",
+  "status": "active",
+  "featured": "0",
+  "position": 27,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T05:55:13.289Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T05:55:13.292Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T05:55:13.292Z"
+  },
+  "slug": "ghe-vong-zVNWN7VmI",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664ee30e98bc803cd8282b34"
+  },
+  "title": "Bàn ăn",
+  "product_category_id": "66496480d34abf48e852e6f6",
+  "description": "<p>B&agrave;n ăn cao cấp v&agrave; sang trọng</p>",
+  "price": 75,
+  "discountPercentage": 10,
+  "stock": 55,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716445964/rbxugootsrz3o03d5g9t.jpg",
+  "status": "active",
+  "featured": "1",
+  "position": 28,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T06:32:46.331Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T06:32:46.336Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T06:32:46.336Z"
+  },
+  "slug": "ban-an",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664ee41098bc803cd8282b52"
+  },
+  "title": "Sofa tiện ích",
+  "product_category_id": "66496480d34abf48e852e6f6",
+  "description": "<p>sofa cao cấp ph&ugrave; hợp với rất nhiều gia đ&igrave;nh v&agrave; kh&ocirc;ng gian.<br>L&agrave;m căn ph&ograve;ng trở l&ecirc;n hợp l&yacute; v&agrave; đẹp hơn.</p>",
+  "price": 167,
+  "discountPercentage": 2,
+  "stock": 56,
+  "status": "active",
+  "position": 29,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T06:37:04.126Z"
+    }
+  },
+  "deleted": true,
+  "updatedBy": [
+    {
+      "account_id": "664cafe399c5ffc5bed5d468",
+      "updatedAt": {
+        "$date": "2024-05-23T06:37:11.396Z"
+      },
+      "_id": {
+        "$oid": "664ee41798bc803cd8282b64"
+      }
+    },
+    {
+      "account_id": "664cafe399c5ffc5bed5d468",
+      "updatedAt": {
+        "$date": "2024-05-23T06:40:01.289Z"
+      },
+      "_id": {
+        "$oid": "664ee4c198bc803cd8282bbf"
+      }
+    },
+    {
+      "account_id": "664cafe399c5ffc5bed5d468",
+      "updatedAt": {
+        "$date": "2024-05-23T06:40:09.778Z"
+      },
+      "_id": {
+        "$oid": "664ee4ca98bc803cd8282bd7"
+      }
+    },
+    {
+      "account_id": "664cafe399c5ffc5bed5d468",
+      "updatedAt": {
+        "$date": "2024-05-23T06:40:45.843Z"
+      },
+      "_id": {
+        "$oid": "664ee4ee98bc803cd8282c05"
+      }
+    },
+    {
+      "account_id": "664cafe399c5ffc5bed5d468",
+      "updatedAt": {
+        "$date": "2024-05-23T06:41:25.968Z"
+      },
+      "_id": {
+        "$oid": "664ee51698bc803cd8282c48"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2024-05-23T06:37:04.128Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T06:41:53.825Z"
+  },
+  "slug": "sofa-tien-ich",
+  "__v": 0,
+  "thumbnail": "/uploads/undefined",
+  "featured": "1",
+  "deletedBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "deletedAt": {
+      "$date": "2024-05-23T06:41:53.824Z"
+    }
+  }
+},
+{
+  "_id": {
+    "$oid": "664ee47798bc803cd8282b82"
+  },
+  "title": "bàn trang điểm",
+  "product_category_id": "66496480d34abf48e852e6f6",
+  "description": "<p>thiết kế sang&nbsp; trọng đơn giản</p>",
+  "price": 75,
+  "discountPercentage": 3,
+  "stock": 33,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716446325/khudh1ubauun3ab6c6kq.jpg",
+  "status": "active",
+  "position": 30,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T06:38:47.247Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T06:38:47.251Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T06:38:47.251Z"
+  },
+  "slug": "ban-trang-diem",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664ee57498bc803cd8282c92"
+  },
+  "title": "bàn tròn",
+  "product_category_id": "66496480d34abf48e852e6f6",
+  "description": "<p>cao cấp ph&ugrave; hợp với rất nhiều gia đ&igrave;nh v&agrave; kh&ocirc;ng gian.<br>L&agrave;m căn ph&ograve;ng trở l&ecirc;n hợp l&yacute; v&agrave; đẹp hơn.</p>",
+  "price": 300,
+  "discountPercentage": 14,
+  "stock": 5,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716446578/yu0ga473stmnaruoau9q.jpg",
+  "status": "active",
+  "featured": "1",
+  "position": 31,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T06:43:00.198Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T06:43:00.207Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T06:43:00.207Z"
+  },
+  "slug": "ban-tron",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664ee5f298bc803cd8282cbb"
+  },
+  "title": "bàn trà",
+  "product_category_id": "66496480d34abf48e852e6f6",
+  "description": "<p>Cao cấp</p>",
+  "price": 300,
+  "discountPercentage": 15,
+  "stock": 34,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716446705/gxf30c23vqaboajookzh.jpg",
+  "status": "active",
+  "featured": "1",
+  "position": 32,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T06:45:06.854Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T06:45:06.864Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T06:45:06.864Z"
+  },
+  "slug": "ban-tra",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664f524767ec3349fa15fe42"
+  },
+  "title": "Bàn thờ",
+  "product_category_id": "66495d4ad34abf48e852e6e8",
+  "description": "<p>Đồ thờ</p>\r\n<p>&nbsp;<img src=\"data:image/jpeg;base64,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\" alt=\"\" width=\"233\" height=\"217\"></p>",
+  "price": 48,
+  "discountPercentage": 2,
+  "stock": 12,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716474438/vih4cslfi4pqe7527llx.jpg",
+  "status": "active",
+  "featured": "1",
+  "position": 33,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T14:27:19.563Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T14:27:19.566Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T14:27:19.566Z"
+  },
+  "slug": "ban-tho",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "664f534867ec3349fa15feae"
+  },
+  "title": "Đồ thờ",
+  "product_category_id": "66495d4ad34abf48e852e6e8",
+  "description": "<p>đồ thờ</p>",
+  "price": 35,
+  "discountPercentage": 12,
+  "stock": 56,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716474695/mfum2mmbnm7hsdgkpsvw.jpg",
+  "status": "active",
+  "featured": "0",
+  "position": 34,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-23T14:31:36.112Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-23T14:31:36.114Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-23T14:31:36.114Z"
+  },
+  "slug": "do-tho",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6653eac6cf4f8b5a63a33a74"
+  },
+  "title": "Ghế nhỏ",
+  "product_category_id": "664959e22627dcda88314686",
+  "description": "<p>Ghế nhỏ thoải m&aacute;i mọi g&oacute;c ngồi</p>",
+  "price": 10,
+  "discountPercentage": 1,
+  "stock": 13,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716775620/o12xaa1daicmxvflvaz1.jpg",
+  "status": "active",
+  "featured": "0",
+  "position": 35,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-27T02:07:02.936Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-27T02:07:02.963Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T02:07:02.963Z"
+  },
+  "slug": "ghe-nho",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6653eb10cf4f8b5a63a33aa9"
+  },
+  "title": "ghế tự",
+  "product_category_id": "664959e22627dcda88314686",
+  "description": "<p>Ghế tựa lưng thư giản</p>",
+  "price": 19,
+  "discountPercentage": 1,
+  "stock": 21,
+  "thumbnail": "https://res.cloudinary.com/dyppifz1z/image/upload/v1716775694/hqldhppxbjrwoezi0r4l.webp",
+  "status": "active",
+  "featured": "0",
+  "position": 36,
+  "createdBy": {
+    "account_id": "664cafe399c5ffc5bed5d468",
+    "createdAt": {
+      "$date": "2024-05-27T02:08:16.059Z"
+    }
+  },
+  "deleted": false,
+  "updatedBy": [],
+  "createdAt": {
+    "$date": "2024-05-27T02:08:16.062Z"
+  },
+  "updatedAt": {
+    "$date": "2024-05-27T02:08:16.062Z"
+  },
+  "slug": "ghe-tu",
+  "__v": 0
+}]

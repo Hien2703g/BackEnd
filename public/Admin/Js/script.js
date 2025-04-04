@@ -104,7 +104,7 @@ if (formChangeMulti) {
       "input[name='id']:checked"
     );
     const typeChange = e.target.elements.type.value;
-    console.log(typeChange);
+    // console.log(typeChange);
     if (typeChange == "delete-all") {
       const isComfirm = confirm(" Ban co chac muon xoa tat ca khong");
       if (!isComfirm) {
@@ -149,3 +149,20 @@ if (showAlert) {
   });
 }
 //End Show Alert
+//Upload Image
+const uploadImage = document.querySelector("[upload-image]");
+if (uploadImage) {
+  const uploadImageInput = document.querySelector("[upload-image-input]");
+  const uploadImagePreview = document.querySelector("[upload-image-preview]");
+  uploadImageInput.addEventListener("change", (e) => {
+    const file = e.target.files[0];
+    // const deleteImage = uploadImage.querySelector("[delete-image]");
+    // deleteImage.addEventListener("click", () => {
+    //   uploadImageInput.value = "";
+    //   uploadImagePreview.src = "";
+    if (file) {
+      uploadImagePreview.src = URL.createObjectURL(file);
+    }
+  });
+}
+//End Upload Image

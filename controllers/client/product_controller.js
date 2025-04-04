@@ -21,3 +21,26 @@ module.exports.index = async (req, res) => {
     products: newProducts,
   });
 };
+//[GET] /products/:slug
+module.exports.detail = async (req, res) => {
+  console.log(req.params.slug);
+
+  // res.render("client/pages/products/detail", {
+  //   pageTitle: "Chi tiet san pham",
+  // });
+  try {
+    const find = {
+      deleted: false,
+      slug: req.params.slug,
+    };
+    const product = await Product.findOne(find);
+    // console.log(product);
+    res.render("client/pages/products/detail", {
+      pageTitle: "Chi tiet san pham",
+      product: product,
+    });
+  } catch (error) {
+    req.flash("error", `Sản phẩm không tồn tại`);
+    res.redirect(`/products`);
+  }
+};

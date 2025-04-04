@@ -8,7 +8,8 @@ include ../../mixins/alert.pug
 
 block main 
     +alert-success(5000)
-        
+    +alert-error(5000)
+
     h1 Danh sách sản phẩm
 
     .card.mb-3 
@@ -20,8 +21,8 @@ block main
                     +filter-status(filterStatus)
                 .col-6
                     +searchHelper(keyword)
-                    
-                
+
+
     .card.mb-3 
         .card-header Danh sách
             .card-body
@@ -51,7 +52,7 @@ block main
                             th Vị trí
                             th Trạng thái 
                             th Hành động 
-                    
+
                     tbody 
                         each item,index in products 
                             tr 
@@ -88,7 +89,7 @@ block main
                                             class="badge text-bg-success"
                                             data-id=item.id
                                         ) Hoạt động
-                                    
+
                                     else
                                         a(
                                             href="javascript:;" 
@@ -97,10 +98,18 @@ block main
                                             data-id=item.id
                                             class="badge text-bg-danger"
                                         ) Dừng hoạt động
-                                    
-                                    
+
+
                                 td 
-                                    button(class="btn btn-warning btn-sm") Sửa
+                                    a(
+                                        href=`${prefixAdmin}/products/detail/${item.id}`
+                                        class="btn btn-light"
+                                    ) Chi tiet
+                                    a(
+                                        href=`${prefixAdmin}/products/edit/${item.id}`
+                                        class="btn btn-warning btn-sm"
+                                    ) Sua
+
                                     button(
                                         data-id=item.id
                                         button-delete
