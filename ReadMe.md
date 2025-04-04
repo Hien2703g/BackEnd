@@ -54,3 +54,9 @@ https://www.npmjs.com/package/multer
 
 Hiển thị hình ảnh trước
 https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-uploaded
+
+- Đẩy file tĩnh lên Cloud
+  Đăng ký tài khoản tại: https://cloudinary.com/
+  ● Link hướng dẫn: npm install cloudinary
+  ● Cài đặt: npm install cloudinary
+  ● Cài đặt: npm install streamifier
