@@ -36,7 +36,6 @@ app.use(express.static(`${__dirname}/public`));
 
 // App locals Variables
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
-
 // Router
 route(app);
 routeAdmin(app);
@@ -44,3 +43,5 @@ routeAdmin(app);
 app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
+
+// test
