@@ -156,13 +156,49 @@ if (uploadImage) {
   const uploadImagePreview = document.querySelector("[upload-image-preview]");
   uploadImageInput.addEventListener("change", (e) => {
     const file = e.target.files[0];
-    // const deleteImage = uploadImage.querySelector("[delete-image]");
-    // deleteImage.addEventListener("click", () => {
-    //   uploadImageInput.value = "";
-    //   uploadImagePreview.src = "";
+    console.log(file);
     if (file) {
       uploadImagePreview.src = URL.createObjectURL(file);
     }
   });
 }
 //End Upload Image
+//Sort
+const sort = document.querySelector("[sort]");
+// console.log(sort);
+if (sort) {
+  let url = new URL(window.location.href);
+  const sortSelect = sort.querySelector("[sort-select]");
+  const sortClear = sort.querySelector("[sort-clear]");
+  //sap xep
+  sortSelect.addEventListener("change", (e) => {
+    // console.log(e.target.value);
+    const value = e.target.value;
+    const [sortKey, sortValue] = value.split("-");
+    url.searchParams.set("sortKey", sortKey);
+    url.searchParams.set("sortValue", sortValue);
+    window.location.href = url.href;
+  });
+  //end sap xep
+
+  // Xóa sắp xếp
+  sortClear.addEventListener("click", () => {
+    url.searchParams.delete("sortKey");
+    url.searchParams.delete("sortValue");
+    window.location.href = url.href;
+  });
+  //Thêm select cho option
+  const SortKey = url.searchParams.get("sortKey");
+  const SortValue = url.searchParams.get("sortValue");
+  // console.log(SortKey);
+  if (SortKey && SortValue) {
+    const stringSort = `${SortKey}-${SortValue}`;
+    console.log(stringSort);
+    const optionSelected = sortSelect.querySelector(
+      `option[value='${stringSort}']`
+    );
+    // optionSelected.selected = true;
+    optionSelected.setAttribute("selected", true);
+  }
+}
+//End Sort

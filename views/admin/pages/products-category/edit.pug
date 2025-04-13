@@ -3,11 +3,14 @@ include ../../mixins/alert.pug
 
 block main 
     +alert-error(5000)
-    h1(class="mb-4") Thêm mới sản phẩm 
+    +alert-success(5000)
+
+    h1(class="mb-4") Chỉnh sửa sản phẩm
+
 
     form(
-        action=`${prefixAdmin}/products/create`
-        id="form-create-product"
+        action=`${prefixAdmin}/products-category/edit/${records.id}?_method=PATCH`
+        id="form-edit-products_category"
         method="POST"
         enctype="multipart/form-data"
     )
@@ -18,6 +21,7 @@ block main
                 class="form-control"
                 id="title"
                 name="title"
+                value=records.title
             ) 
         div(class="form-group")
             label(for="desc") Mô tả
@@ -26,37 +30,8 @@ block main
                 id="desc"
                 name="description"
                 rows="5"
-            ) 
-        div(class="form-group")
-            label(for="price") Giá
-            input(
-                type="number"
-                class="form-control"
-                ip="price"
-                name="price"
-                value="0"
-                min="0"
-            )
-        div(class="form-group")
-            label(for="discount") %Giảm Giá
-            input(
-                type="number"
-                class="form-control"
-                id="discount"
-                name="discountPercentage"
-                value="0"
-                min="0"
-            )
-        div(class="form-group")
-            label(for="stock") Số lượng 
-            input(
-                type="number"
-                class="form-control"
-                id="stock"
-                name="stock"
-                value="0"
-                min="0"
-            )
+                value=records.description
+            ) #{records.description}
         div(
             class="form-group"
             upload-image
@@ -72,9 +47,10 @@ block main
             )
             img(
                 class="image-preview"
-                src=""
+                src=records.thumbnail
                 upload-image-preview
             ) 
+
         div(class="form-group")
             label(for="position") Vị trí
             input(
@@ -84,6 +60,7 @@ block main
                 name="position"
                 placeholder="Tự động tăng"
                 min="1"
+                value=records.position
             )
         div(class="form-group form-check form-check-inline")
             input(
@@ -92,7 +69,7 @@ block main
                 id="statusActive"
                 name="status"
                 value="active"
-                checked
+                checked=(records.status=="active"?true:false)
             )
             label(for="statusActive" class="form-check-label") Hoạt động
         div(class="form-group form-check form-check-inline")
@@ -102,13 +79,18 @@ block main
                 id="statusInActive"
                 name="status"
                 value="inactive"
-                checked
+                checked=(records.status=="inactive"?true:false)
             )
             label(for="statusInActive" class="form-check-label") Dừng hoạt động
 
         div(class="form-group")
+            a(
+                href=`${prefixAdmin}/products-category`
+                class="btn btn-warning"
+            ) Tro ve
             button(
                 type="submit"
                 class="btn btn-primary"
-            ) Tạo mới
-    script(src="/Admin/Js/productScript.js")
+            ) Update
+
+    script(src="/Admin/Js/productCategoryScript.js")

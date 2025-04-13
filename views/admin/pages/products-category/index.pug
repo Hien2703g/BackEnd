@@ -6,19 +6,17 @@ include ../../mixins/form-change-multi.pug
 include ../../mixins/alert.pug
 include ../../mixins/sort.pug
 
-
 block main 
     +alert-success(5000)
     +alert-error(5000)
 
-    h1 Danh sách sản phẩm
+    h1 Danh mục sản phẩm
 
     .card.mb-3 
         .card-header Bộ lọc và tìm kiếm.
         .card-body 
             .row
                 .col-6
-                    // mixin filterStarus
                     +filter-status(filterStatus)
                 .col-6
                     +searchHelper(keyword)
@@ -34,10 +32,10 @@ block main
         .card-body
             .row 
                 .col-8
-                    +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)
+                    +form-change-multi(`${prefixAdmin}/products-category/change-multi?_method=PATCH`)
                 .col-4 
                     a(
-                        href=`${prefixAdmin}/products/create`
+                        href=`${prefixAdmin}/products-category/create`
                         class="btn btn-outline-success"
                     ) + Thêm mới
             table(
@@ -54,13 +52,12 @@ block main
                         th STT 
                         th Hình ảnh
                         th Tiêu đề
-                        th Giá
                         th Vị trí
                         th Trạng thái 
                         th Hành động 
 
                 tbody 
-                    each item,index in products 
+                    each item,index in records
                         tr 
                             td 
                                 input(
@@ -77,7 +74,6 @@ block main
                                     height="auto"
                                 )
                             td #{item.title}
-                            td #{item.price} $
                             td 
                                 input(
                                     type="number"
@@ -105,14 +101,13 @@ block main
                                         class="badge text-bg-danger"
                                     ) Dừng hoạt động
 
-
                             td 
                                 a(
-                                    href=`${prefixAdmin}/products/detail/${item.id}`
+                                    href=`${prefixAdmin}/products-category/detail/${item.id}`
                                     class="btn btn-light"
                                 ) Chi tiet
                                 a(
-                                    href=`${prefixAdmin}/products/edit/${item.id}`
+                                    href=`${prefixAdmin}/products-category/edit/${item.id}`
                                     class="btn btn-warning btn-sm"
                                 ) Sua
 
@@ -121,19 +116,27 @@ block main
                                     button-delete
                                     class="btn btn-danger btn-sm ml-1"
                                 ) Xóa
-    +Pagitation(pagitation) 
-
     form(
         action=""
         method="POST"
         id="form-change-status"
-        data-path=`${prefixAdmin}/products/change-status`
+        data-path=`${prefixAdmin}/products-category/change-status`
     ) 
     form(
         action=""
         method="POST"
         id="form-delete-item"
-        data-path=`${prefixAdmin}/products/delete`
+        data-path=`${prefixAdmin}/products-category/delete`
     ) 
+    script(src="/Admin/Js/productCategoryScript.js")
 
-    script(src="/Admin/Js/productScript.js")
+//- _id
+//- title 
+//- description 
+//- thumbnail 
+//- status 
+//- position 
+//- deleted 
+//- deleteAt
+//- updateAt 
+//- slug 
