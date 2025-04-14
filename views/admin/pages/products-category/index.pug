@@ -5,6 +5,7 @@ include ../../mixins/pagitation.pug
 include ../../mixins/form-change-multi.pug
 include ../../mixins/alert.pug
 include ../../mixins/sort.pug
+include ../../mixins/table-tree.pug
 
 block main 
     +alert-success(5000)
@@ -57,65 +58,7 @@ block main
                         th Hành động 
 
                 tbody 
-                    each item,index in records
-                        tr 
-                            td 
-                                input(
-                                    type="checkbox" 
-                                    name="id"
-                                    value=item.id
-                                )
-                            td #{index+1}
-                            td 
-                                img(
-                                    src=item.thumbnail
-                                    alt=item.title
-                                    width="100px"
-                                    height="auto"
-                                )
-                            td #{item.title}
-                            td 
-                                input(
-                                    type="number"
-                                    value=item.position 
-                                    style="width:60px"
-                                    min="1"
-                                    name="position"
-                                )
-                            td 
-                                if(item.status == "active") 
-                                    a(
-                                        href="javascript:" 
-                                        button-change-status
-                                        data-status="active"
-                                        class="badge text-bg-success"
-                                        data-id=item.id
-                                    ) Hoạt động
-
-                                else
-                                    a(
-                                        href="javascript:;" 
-                                        button-change-status
-                                        data-status="inactive" 
-                                        data-id=item.id
-                                        class="badge text-bg-danger"
-                                    ) Dừng hoạt động
-
-                            td 
-                                a(
-                                    href=`${prefixAdmin}/products-category/detail/${item.id}`
-                                    class="btn btn-light"
-                                ) Chi tiet
-                                a(
-                                    href=`${prefixAdmin}/products-category/edit/${item.id}`
-                                    class="btn btn-warning btn-sm"
-                                ) Sua
-
-                                button(
-                                    data-id=item.id
-                                    button-delete
-                                    class="btn btn-danger btn-sm ml-1"
-                                ) Xóa
+                    +table-tree(records)
     form(
         action=""
         method="POST"
