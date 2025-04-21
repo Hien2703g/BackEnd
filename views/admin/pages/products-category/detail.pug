@@ -13,14 +13,14 @@ block main
     if(records.status)
         div(class="mb-4")
             span Trang thai: 
-            if(records.status=="active")
-                span(class="badge badge-success") Hoat dong
-            else 
-                span(class="badge badge-danger") Dung hoat dong
+            if(records.status === "active")
+                span(class="badge text-bg-success") Hoạt động
+            else  
+                span(class="badge text-bg-danger") Dừng hoạt động
     if(records.position)
-        div(class="mb-4") <b> #{records.position}</b>
+        div(class="mb-4") Vị trí: <b> #{records.position}</b>
     if(records.description)
-        div(class="mb-4")  !{records.description}
+        div(class="mb-4") Mô tả: !{records.description}
     div(class="form-group")
         a(
             href=`${prefixAdmin}/products-category`
@@ -30,4 +30,3 @@ block main
             href=`${prefixAdmin}/products-category/edit/${records.id}`
             class="btn btn-danger btn-sm"
         ) Sua
-    script(src="/Admin/Js/producCategorytScript.js")

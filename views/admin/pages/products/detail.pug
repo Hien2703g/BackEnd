@@ -1,40 +1,49 @@
 extends ../../layouts/default.pug 
-
+include ../../mixins/name-tree.pug
 
 block main 
-    if(product.title)
+    if (product.title)
         h1(class="mb-4") #{product.title}
-    if(product.price)
-        div(class="mb-4") Gia: <b> #{product.price}$</b>
-    if(product.discountPercentage)
-        div(class="mb-4") <b>#{product.discountPercentage}</b>
-    if(product.stock)
-        div(class="mb-4") Gia: <b> #{product.stock}</b>
-    if(product.thumbnail)
+
+    if(category)
+        if(product.product_category_id)
+            div(class="mb-4") <b>Danh mục cha:</b> 
+                +name-tree(category,1,product.product_category_id)
+
+    if (product.price)
+        div(class="mb-4") Giá: <b>#{product.price}</b>
+
+    if (product.discountPercentage)
+        div(class="mb-4") Giảm giá: <b>#{product.discountPercentage}%</b>
+
+    if (product.stock) 
+        div(class="mb-4") Còn lại: <b>#{product.stock}</b>
+
+    if (product.thumbnail) 
         div(class="mb-4") 
             img(
-                src=product.thumbnail
-                style="width:150px"
+                src=product.thumbnail 
+                style="width: 100px"
             )
-    if(product.status)
-        div(class="mb-4")
-            span Trang thai: 
-            if(product.status=="active")
-                span(class="badge badge-success") Hoat dong
-            else 
-                span(class="badge badge-danger") Dung hoat dong
-    if(product.position)
-        div(class="mb-4") <b> #{product.position}</b>
-    if(product.description)
-        div(class="mb-4")  !{product.description}
-    div(class="form-group")
-        a(
-            href=`${prefixAdmin}/products`
-            class="btn btn-warning"
-        ) Tro ve
-        a(
-            href=`${prefixAdmin}/products/edit/${product.id}`
-            class="btn btn-danger btn-sm"
-        ) Sua
 
-    script(src="/Admin/Js/productScript.js")
+    if (product.status) 
+        div(class="mb-4")
+            //- div #{product.status}
+            span Trạng thái:
+            if (product.status == "active")
+                span(class="badge text-bg-success") Hoạt động
+            else  
+                span(class="badge text-bg-danger") Dừng hoạt động
+
+    if (product.position)
+        div(class="mb-4") Vị trí: <b>#{product.position}</b>
+
+    if (product.description)
+        div(class="mb-4") Mô tả: !{product.description}
+
+    a(
+        class="btn btn-warning"
+        href=`${prefixAdmin}/products/edit/${product.id}`
+    ) Chỉnh sửa
+
+        script(src="/Admin/Js/productScript.js") 

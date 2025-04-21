@@ -60,3 +60,7 @@ https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-upload
   ● Link hướng dẫn: npm install cloudinary
   ● Cài đặt: npm install cloudinary
   ● Cài đặt: npm install streamifier
+
+chèn ảnh vào tinymce:
+https://www.tiny.cloud/docs/tinymce/latest/file-image-upload/#file_picker_types
+enctype="multipart/form-data" xử lý upload hình ảnh

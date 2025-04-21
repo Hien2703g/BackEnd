@@ -13,6 +13,7 @@ module.exports.index = async (req, res) => {
   let find = {
     deleted: false,
   };
+
   if (req.query.status) {
     find.status = req.query.status;
   }
@@ -21,50 +22,21 @@ module.exports.index = async (req, res) => {
   // Search
   const objectSearch = SearchHelper(req.query);
   if (objectSearch.regex) {
-    // keyword = req.query.keyword;
-    // const regex = new RegExp(keyword, "i");
     find.title = objectSearch.regex;
   }
   //End Search
+  const records = await ProductCategory.find(find);
 
-  const countProductsCategory = await ProductCategory.countDocuments(find);
-  //Pagitation
-  let objectPagitation = PagitationHelper(
-    req.query,
-    {
-      limitItem: 4,
-      currentPage: 1,
-    },
-    countProductsCategory
-  );
-  //End Patitation
-
-  //Sort
-  let sort = {};
-  if (req.query.sortKey && req.query.sortValue) {
-    sort[req.query.sortKey] = req.query.sortValue;
-  } else {
-    sort.position = "desc";
-  }
-
-  //End Sort
-  const records = await ProductCategory.find(find)
-    .sort(sort)
-    .limit(objectPagitation.limitItem)
-    .skip(objectPagitation.skip);
   const newRecords = createTreeHelper.tree(records);
-  // let find = {
-  //   deleted: false,
-  // };
-  // const records = await ProductCategory.find(find);
+  // console.log(newRecords);
   res.render("admin/pages/products-category/index", {
     pageTitle: "Danh mục sản phẩm",
-    records: newRecords,
     filterStatus: filterStatus,
     keyword: objectSearch.keyword,
-    pagitation: objectPagitation,
+    records: newRecords,
   });
 };
+
 // [PATCH]/admin/products-category/change-status/:status/:id
 module.exports.changeStatus = async (req, res) => {
   // console.log(req.params);
@@ -118,7 +90,6 @@ module.exports.changeMulti = async (req, res) => {
       break;
     case "change-position":
       for (const item of ids) {
-        // console.log(item.split("-"));
         let [id, position] = item.split("-");
         position = parseInt(position);
         await ProductCategory.updateOne(
@@ -136,24 +107,22 @@ module.exports.changeMulti = async (req, res) => {
     default:
       break;
   }
-  // console.log(type);
-  // console.log(ids);
   res.redirect("back");
 };
+
 //[GET] /admin/products-category/create
 module.exports.create = async (req, res) => {
   let find = {
     deleted: false,
   };
   const records = await ProductCategory.find(find);
-  // const newRecords = createTree(records);
-  // console.log(newRecords);
   const newRecords = createTreeHelper.tree(records);
   res.render("admin/pages/products-category/create", {
     pageTitle: "Tạo danh mục sản phẩm",
     records: newRecords,
   });
 };
+
 //[POST] admin/products-category/create
 module.exports.createPost = async (req, res) => {
   if (req.body.position == "") {
@@ -167,33 +136,36 @@ module.exports.createPost = async (req, res) => {
   req.flash("success", "Tạo danh mục thành công!!!");
   res.redirect(`${systemConfig.prefixAdmin}/products-category`);
 };
-//[POST] admin/products-category/edit
+
+//[GET] admin/products-category/edit
 module.exports.edit = async (req, res) => {
   try {
-    const find = {
+    const id = req.params.id;
+    const data = await ProductCategory.findOne({
+      _id: id,
       deleted: false,
-      _id: req.params.id,
-    };
-    const records = await ProductCategory.findOne(find);
-    // console.log(product);
+    });
+    const records = await ProductCategory.find({
+      deleted: false,
+    });
+
+    const newRecords = createTreeHelper.tree(records);
+
     res.render("admin/pages/products-category/edit", {
-      pageTitle: "Chinh sua mot danh mục san pham",
-      records: records,
+      pageTitle: "Chỉnh sửa danh mục sản phẩm",
+      data: data,
+      records: newRecords,
     });
   } catch (error) {
     req.flash("error", `Danh mục không tồn tại`);
     res.redirect(`${systemConfig.prefixAdmin}/products-category`);
   }
 };
+
 //[PATCH] admin/products-category/edit/:id
 module.exports.editPatch = async (req, res) => {
-  // console.log(req.body);
-  // res.send("OK");
   const id = req.params.id;
   req.body.position = parseInt(req.body.position);
-  // if (req.file) {
-  //   req.body.thumbnail = `/uploads/${req.file.filename}`;
-  // }
   try {
     await ProductCategory.updateOne(
       {
@@ -216,7 +188,6 @@ module.exports.detail = async (req, res) => {
       _id: req.params.id,
     };
     const records = await ProductCategory.findOne(find);
-    // console.log(product);
     res.render("admin/pages/products-category/detail", {
       pageTitle: records.title,
       records: records,
