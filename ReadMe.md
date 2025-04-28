@@ -64,3 +64,7 @@ https://stackoverflow.com/questions/4459379/preview-an-image-before-it-is-upload
 chèn ảnh vào tinymce:
 https://www.tiny.cloud/docs/tinymce/latest/file-image-upload/#file_picker_types
 enctype="multipart/form-data" xử lý upload hình ảnh
+
+- MD5 npm: để mã hóa một thư viện nào đó<Mã hóa mật khẩu>
+
+  https://expressjs.com/en/5x/api.html#res.cookie
