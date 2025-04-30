@@ -1,6 +1,7 @@
 const { query, application } = require("express");
 const Product = require("../../models/product.model");
 const ProductCategory = require("../../models/product-category.model");
+const Account = require("../../models/account.model");
 const systemConfig = require("../../config/system");
 const filterStatusHelper = require("../../Helper/filterStatus");
 const SearchHelper = require("../../Helper/search");
@@ -53,6 +54,16 @@ module.exports.index = async (req, res) => {
     .limit(objectPagitation.limitItem)
     .skip(objectPagitation.skip);
   // console.log(products);
+  for (const product of products) {
+    //Lấy ra thông tin người tạo
+    const user = await Account.findOne({
+      _id: product.createdBy.account_id,
+    });
+    console.log(user);
+    if (user) {
+      product.accountFullName = user.fullName;
+    }
+  }
   res.render("admin/pages/products/index", {
     pageTitle: "Danh sách sản phẩm",
     products: products,
@@ -109,7 +120,13 @@ module.exports.changeMulti = async (req, res) => {
         {
           _id: { $in: ids },
         },
-        { deleted: true, deletedAt: new Date() }
+        {
+          deleted: true,
+          deletedBy: {
+            account_id: res.locals.user.id,
+            deletedAt: new Date(),
+          },
+        }
       );
       req.flash("success", `Xóa ${ids.length} sản phẩm thành công!!!`);
       break;
@@ -143,7 +160,13 @@ module.exports.deleteItem = async (req, res) => {
   // await Product.deleteOne({ _id: id });
   await Product.updateOne(
     { _id: id },
-    { deleted: true, deletedAt: new Date() }
+    {
+      deleted: true,
+      deletedBy: {
+        account_id: res.locals.user.id,
+        deletedAt: new Date(),
+      },
+    }
   );
   req.flash("success", `Xóa sản phẩm thành công!!!`);
   res.redirect("back");
@@ -178,6 +201,9 @@ module.exports.createPost = async (req, res) => {
   // if (req.file) {
   //   req.body.thumbnail = `/uploads/${req.file.filename}`;
   // }
+  req.body.createdBy = {
+    account_id: res.locals.user.id,
+  };
   const product = new Product(req.body);
   await product.save();
   req.flash("success", "Tạo sản phẩm thành công!!!");

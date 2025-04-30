@@ -25,25 +25,40 @@ mixin table-tree(items, level=1)
                     min="1"
                     name="position"
                 )
-            td 
-                if(item.status == "active") 
-                    a(
-                        href="javascript:" 
-                        button-change-status
-                        data-status="active"
-                        class="badge text-bg-success"
-                        data-id=item.id
-                    ) Hoạt động
+            if(role.permissions.includes("products-category_edit"))
+                td 
+                    if(item.status == "active") 
+                        a(
+                            href="javascript:" 
+                            button-change-status
+                            data-status="active"
+                            class="badge text-bg-success"
+                            data-id=item.id
+                        ) Hoạt động
 
-                else
-                    a(
-                        href="javascript:;" 
-                        button-change-status
-                        data-status="inactive" 
-                        data-id=item.id
-                        class="badge text-bg-danger"
-                    ) Dừng hoạt động
+                    else
+                        a(
+                            href="javascript:;" 
+                            button-change-status
+                            data-status="inactive" 
+                            data-id=item.id
+                            class="badge text-bg-danger"
+                        ) Dừng hoạt động
+            else 
+                td 
+                    if(item.status == "active") 
+                        span(
+                            data-status="active"
+                            class="badge text-bg-success"
+                            data-id=item.id
+                        ) Hoạt động
 
+                    else
+                        span(
+                            data-status="inactive" 
+                            data-id=item.id
+                            class="badge text-bg-danger"
+                        ) Dừng hoạt động
             td 
                 a(
                     href=`${prefixAdmin}/products-category/detail/${item.id}`
@@ -52,13 +67,15 @@ mixin table-tree(items, level=1)
                 a(
                     href=`${prefixAdmin}/products-category/edit/${item.id}`
                     class="btn btn-warning btn-sm"
-                ) Sua
-
-                button(
-                    data-id=item.id
-                    button-delete
-                    class="btn btn-danger btn-sm ml-1"
-                ) Xóa
+                ) Sửa
+                if(role.permissions.includes("products-category_delete"))
+                    button(
+                        data-id=item.id
+                        button-delete
+                        class="btn btn-danger btn-sm ml-1"
+                    ) Xóa
+                else 
+                    span(class="btn btn-danger btn-sm ml-1") Xóa
 
         if item.children && item.children.length > 0
             +table-tree(item.children, level + 1)

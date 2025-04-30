@@ -7,6 +7,7 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const systemConfig = require("./config/system");
 const database = require("./config/database");
+const moment = require("moment"); // require
 require("dotenv").config();
 const app = express();
 
@@ -36,7 +37,7 @@ app.set("views", `${__dirname}/views`);
 app.set("view engine", "pug");
 
 app.use(express.static(`${__dirname}/public`));
-
+app.locals.moment = moment;
 // App locals Variables
 app.locals.prefixAdmin = systemConfig.prefixAdmin;
 // Router

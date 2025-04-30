@@ -68,3 +68,4 @@ enctype="multipart/form-data" xử lý upload hình ảnh
 - MD5 npm: để mã hóa một thư viện nào đó<Mã hóa mật khẩu>
 
   https://expressjs.com/en/5x/api.html#res.cookie
+  https://www.npmjs.com/package/moment Giải mã thời gian
