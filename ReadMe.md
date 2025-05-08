@@ -69,3 +69,5 @@ enctype="multipart/form-data" xử lý upload hình ảnh
 
   https://expressjs.com/en/5x/api.html#res.cookie
   https://www.npmjs.com/package/moment Giải mã thời gian
+  Set thời gian cho cookie:
+  https://expressjs.com/en/5x/api.html#res.cookie

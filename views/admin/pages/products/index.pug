@@ -59,6 +59,7 @@ block main
                             th Giá
                             th Vị trí
                             th Người tạo
+                            th Người cập nhật
                             th Trạng thái 
                             th Hành động 
 
@@ -92,7 +93,14 @@ block main
                                 td 
 
                                     p #{item.accountFullName}
-                                    +formatDateTime(item.createdBy.createdAt)
+                                    p
+                                        +formatDateTime(item.createdBy.createdAt)
+                                td 
+                                    - const updatedBy = item.updatedBy.slice(-1)[0]
+                                    if (updatedBy)
+                                        p #{updatedBy.accountFullName}
+                                        +formatDateTime(updatedBy.updatedAt) 
+
                                 td  
                                     if(role.permissions.includes("products_edit"))
                                         if(item.status == "active") 

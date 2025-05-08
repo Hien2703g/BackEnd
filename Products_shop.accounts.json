@@ -1,0 +1,63 @@
+[{
+  "_id": {
+    "$oid": "680e299facb9638351080a07"
+  },
+  "fullName": "Gái đẹp",
+  "email": "A12345678@gmail.com",
+  "password": "25d55ad283aa400af464c76d713c07ad",
+  "token": "7uLkNVnSCAyW70E9sljw",
+  "phone": "0123445673",
+  "role_id": "67ffe66960fe0faca6204800",
+  "status": "active",
+  "deleted": false,
+  "createdAt": {
+    "$date": "2025-04-27T12:57:03.753Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-30T15:29:02.569Z"
+  },
+  "__v": 0,
+  "avatar": "https://res.cloudinary.com/dyppifz1z/image/upload/v1745763754/bayitkdmm5takqrudrhr.jpg"
+},
+{
+  "_id": {
+    "$oid": "680e2e4ef34ff5c3b1a32c3d"
+  },
+  "fullName": "Gái đẹp 1",
+  "email": "C12345678@gmail.com",
+  "password": "25d55ad283aa400af464c76d713c07ad",
+  "token": "gFP5frewGdMEI8uv4N72",
+  "phone": "0123445673",
+  "avatar": "https://res.cloudinary.com/dyppifz1z/image/upload/v1745759820/absybngyiem228qnttcc.jpg",
+  "role_id": "68030d24358e82ec116ef314",
+  "status": "inactive",
+  "deleted": false,
+  "createdAt": {
+    "$date": "2025-04-27T13:17:02.146Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-27T15:44:32.132Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680e3d6093e4067029b1a801"
+  },
+  "fullName": "Gái đẹp 2",
+  "email": "D12345678@gmail.com",
+  "password": "25d55ad283aa400af464c76d713c07ad",
+  "token": "lvvWoKA2tbvB1Y4N520G",
+  "phone": "0123445673",
+  "avatar": "https://res.cloudinary.com/dyppifz1z/image/upload/v1745763785/mcj4b3lmwxihjf1fi7eo.jpg",
+  "role_id": "67ffe68a60fe0faca6204803",
+  "status": "active",
+  "deleted": false,
+  "createdAt": {
+    "$date": "2025-04-27T14:21:20.381Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-27T14:23:06.048Z"
+  },
+  "__v": 0
+}]

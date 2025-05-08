@@ -1,0 +1,111 @@
+[{
+  "_id": {
+    "$oid": "67ffe66960fe0faca6204800"
+  },
+  "title": "Quản trị viên",
+  "description": "Đầy đủ các quyền",
+  "permissions": [
+    "products-category_view",
+    "products-category_create",
+    "products-category_edit",
+    "products-category_delete",
+    "products_view",
+    "products_create",
+    "products_edit",
+    "products_delete",
+    "roles_view",
+    "roles_create",
+    "roles_edit",
+    "roles_delete",
+    "roles_permissions",
+    "accounts_view",
+    "accounts_create",
+    "accounts_edit",
+    "accounts_delete"
+  ],
+  "deleted": false,
+  "createdAt": {
+    "$date": "2025-04-16T17:18:33.971Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-29T16:23:28.709Z"
+  },
+  "__v": 0,
+  "deletedAt": {
+    "$date": "2025-04-25T11:14:37.137Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "67ffe68a60fe0faca6204803"
+  },
+  "title": "Quản lý nội dung",
+  "description": "Quyền quản lý nội dung",
+  "permissions": [
+    "products-category_view",
+    "products_view",
+    "roles_view"
+  ],
+  "deleted": false,
+  "createdAt": {
+    "$date": "2025-04-16T17:19:06.731Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-29T16:23:29.091Z"
+  },
+  "__v": 0,
+  "deletedAt": {
+    "$date": "2025-04-23T03:41:07.375Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68030d24358e82ec116ef314"
+  },
+  "title": "Quản lý sản phẩm",
+  "description": "Quản lý có quyền để quản lý các sản phẩm.",
+  "permissions": [
+    "products-category_view",
+    "products-category_create",
+    "products-category_edit",
+    "products-category_delete",
+    "products_view",
+    "products_create",
+    "products_edit",
+    "products_delete",
+    "roles_view",
+    "accounts_view"
+  ],
+  "deleted": false,
+  "createdAt": {
+    "$date": "2025-04-19T02:40:36.228Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-29T16:23:29.398Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "680860ab9c0094419109b31f"
+  },
+  "title": "nhân viên",
+  "description": "xử lý đơn hàng",
+  "permissions": [
+    "products-category_view",
+    "products-category_create",
+    "products_view",
+    "products_create",
+    "roles_view",
+    "accounts_view",
+    "accounts_create"
+  ],
+  "deleted": false,
+  "createdAt": {
+    "$date": "2025-04-23T03:38:19.700Z"
+  },
+  "updatedAt": {
+    "$date": "2025-04-29T16:23:29.706Z"
+  },
+  "__v": 0
+}]

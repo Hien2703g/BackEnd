@@ -111,7 +111,7 @@ module.exports.permissionsPatch = async (req, res) => {
   try {
     // console.log(req.body);
     const permissions = JSON.parse(req.body.permissions);
-    // console.log(permissions);
+    console.log(permissions);
     // res.send("OK");
     for (const item of permissions) {
       await Role.updateOne(
