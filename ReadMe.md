@@ -72,7 +72,7 @@ enctype="multipart/form-data" xử lý upload hình ảnh
   Set thời gian cho cookie:
   https://expressjs.com/en/5x/api.html#res.cookie
 
-Cách thêm, xóa trong đơn hàng:
+Cách thêm, xóa trong đơn hàng:https://stackoverflow.com/questions/16959099/how-to-remove-array-element-in-mongodb
 collection.update(
 { \_id: id },
 { $push: { 'contact.phone': { number: '+1786543589455' } } }

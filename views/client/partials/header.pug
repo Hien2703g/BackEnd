@@ -38,6 +38,8 @@ header.header
                             +sub-menu(layoutProductsCategory, pathProduct)
                         li 
                             a(href="/cart") Giỏ hàng  (#{miniCart ? miniCart.totalQuantity : "0"})
+                        li 
+                            a(href=`/checkout/success`) Đơn hàng
                         if (user)
                             li 
                                 a(href="/user/info") #{user.fullName}
