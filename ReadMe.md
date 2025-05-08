@@ -71,3 +71,13 @@ enctype="multipart/form-data" xử lý upload hình ảnh
   https://www.npmjs.com/package/moment Giải mã thời gian
   Set thời gian cho cookie:
   https://expressjs.com/en/5x/api.html#res.cookie
+
+Cách thêm, xóa trong đơn hàng:
+collection.update(
+{ \_id: id },
+{ $push: { 'contact.phone': { number: '+1786543589455' } } }
+);
+collection.update(
+{ \_id: id },
+{ $pull: { 'contact.phone': { number: '+1786543589455' } } }
+);

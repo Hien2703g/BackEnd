@@ -1,18 +1,18 @@
 const Cart = require("../../models/cart.model");
+
 module.exports.cartId = async (req, res, next) => {
-  // console.log(req.cookies.cartId);
-  // console.log("Luôn chạy qua đay");
   if (!req.cookies.cartId) {
-    //Tạo giỏ hàng
+    //Tajo gio hang
     const cart = new Cart();
     await cart.save();
-    const expiresCookie = 365 * 24 * 60 * 60 * 1000;
-    console.log(cart);
+
+    const expiresTime = 1000 * 60 * 60 * 24 * 365;
+
     res.cookie("cartId", cart.id, {
-      expires: new Date(Date.now() + expiresCookie),
+      expires: new Date(Date.now() + expiresTime),
     });
   } else {
-    // Lấy ra thôi
+    //Lay ra
     const cart = await Cart.findOne({
       _id: req.cookies.cartId,
     });
@@ -20,8 +20,8 @@ module.exports.cartId = async (req, res, next) => {
       (sum, item) => sum + item.quantity,
       0
     );
-    // console.log(cart);
     res.locals.miniCart = cart;
   }
+
   next();
 };
