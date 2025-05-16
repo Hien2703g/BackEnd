@@ -41,6 +41,7 @@ header.header
                         li 
                             a(href=`/checkout/success`) Đơn hàng
                         if (user)
+                            //- div #{user}
                             li 
                                 a(href="/user/info") #{user.fullName}
                             li 
