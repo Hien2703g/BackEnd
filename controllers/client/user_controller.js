@@ -39,6 +39,7 @@ module.exports.registerPost = async (req, res) => {
 
 // [GET] /user/login
 module.exports.login = async (req, res) => {
+  res.clearCookie("cartId");
   res.render("client/pages/user/login", {
     pageTitle: "Đăng ký tài khoản",
   });
@@ -72,16 +73,23 @@ module.exports.loginPost = async (req, res) => {
   }
 
   res.cookie("tokenUser", user.tokenUser);
-
-  // Lưu user_id vào collection carts
-  await Cart.updateOne(
-    {
-      _id: req.cookies.cartId,
-    },
-    {
-      user_id: user.id,
-    }
-  );
+  const cart = await Cart.findOne({
+    user_id: user.id,
+  });
+  if (cart) {
+    console.log(cart);
+    res.cookie("cartId", cart.id);
+  } else {
+    //Lưu user_id vào collection carts
+    await Cart.updateOne(
+      {
+        _id: req.cookies.cartId,
+      },
+      {
+        user_id: user.id,
+      }
+    );
+  }
 
   res.redirect("/");
 };
@@ -89,6 +97,7 @@ module.exports.loginPost = async (req, res) => {
 //[GET] /user/logout
 module.exports.logout = async (req, res) => {
   res.clearCookie("tokenUser");
+  res.clearCookie("cartId");
   res.redirect("/");
 };
 //[GET] /user/password/forgot
@@ -176,4 +185,18 @@ module.exports.resetPasswordPost = async (req, res) => {
     }
   );
   res.redirect("/");
+};
+
+// [GET] /user/register
+module.exports.info = async (req, res) => {
+  const tokenUser = req.cookies.tokenUser;
+
+  const infoUser = await User.findOne({
+    tokenUser: tokenUser,
+  }).select("-password");
+
+  res.render("client/pages/user/info", {
+    pageTitle: "Thông tin người dùng",
+    infoUser: infoUser,
+  });
 };

@@ -1,0 +1,10 @@
+extends ../../layouts/default.pug 
+include ../../mixins/box-head.pug
+
+block main
+    .container
+        .row
+            .col-12 
+                +box-head(pageTitle)
+
+            div #{infoUser}
