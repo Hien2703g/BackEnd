@@ -5,7 +5,7 @@ const ForgotPassword = require("../../models/forgot-password.model");
 const Cart = require("../../models/cart.model");
 
 const generateHelper = require("../../Helper/generate");
-// const sendMailHelper = require("../../helpers/send-mail");
+const sendMailHelper = require("../../Helper/send-mail");
 
 // [GET] /user/register
 module.exports.register = async (req, res) => {
@@ -113,12 +113,67 @@ module.exports.forgotPasswordPost = async (req, res) => {
   const otp = generateHelper.generateRandomNumber(5);
   const objectForgotPassword = {
     email: email,
-    opt: otp,
+    otp: otp,
     expireAt: Date.now(),
   };
   // console.log(objectForgotPassword);
   const forgotPassword = new ForgotPassword(objectForgotPassword);
   await forgotPassword.save();
-  //Neu ton tai thi gui ma OTP
-  res.send("OK");
+  //Neu ton tai thi gui ma OTP qua email
+  const subject = "Mã OTP xác minh lấy lại mật khẩu";
+  const html = `Mã OTP lấy lại mật khẩu Ecommerce là :<b>${otp}</b>. Thời hạn sử dụng là 3 phút. Hế, đại đại nha bà`;
+  sendMailHelper.sendMail(email, subject, html);
+
+  res.redirect(`/user/password/otp?email=${email}`);
+};
+//[GET] /user/password/otp
+module.exports.otpPassword = async (req, res) => {
+  const email = req.query.email;
+  // console.log(email);
+  res.render("client/pages/user/otp-password", {
+    pageTitle: "Confirm-password",
+    email: email,
+  });
+};
+//[POST] /user/password/otp
+module.exports.otpPasswordPost = async (req, res) => {
+  const email = req.body.email;
+  const otp = req.body.otp;
+  const result = await ForgotPassword.findOne({
+    email: email,
+    otp: otp,
+  });
+  if (!result) {
+    req.flash("error", "OTP khong hop le!!");
+    res.redirect("back");
+    return;
+  }
+  const user = await User.findOne({
+    email: email,
+  });
+  res.cookie("tokenUser", user.tokenUser);
+  res.redirect("/user/password/reset");
+};
+//[GET] /user/password/reset
+module.exports.resetPassword = async (req, res) => {
+  res.render("client/pages/user/reset-password", {
+    pageTitle: "Reset-password",
+  });
+};
+//[POST] /user/password/reset
+module.exports.resetPasswordPost = async (req, res) => {
+  const password = req.body.password;
+  // const confirmPassword = req.body.confirmPassword;
+  const tokenUser = req.cookies.tokenUser;
+  // console.log(password);
+  // console.log(tokenUser);
+  await User.updateOne(
+    {
+      tokenUser: tokenUser,
+    },
+    {
+      password: md5(password),
+    }
+  );
+  res.redirect("/");
 };

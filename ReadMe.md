@@ -81,3 +81,32 @@ collection.update(
 { \_id: id },
 { $pull: { 'contact.phone': { number: '+1786543589455' } } }
 );
+
+- Gửi mã xác nhận qua email:npm nodemailer
+  https://www.npmjs.com/package/nodemailer
+
+  hướng dẫn:
+  https://nodemailer.com/usage/
+  const nodemailer = require('nodemailer');
+
+// Tạo transporter sử dụng Gmail
+let transporter = nodemailer.createTransport({
+service: 'gmail',
+auth: {
+user: 'youremail@gmail.com',
+pass: 'your_app_password', // mật khẩu ứng dụng (App Password)
+}
+});
+
+// Cấu hình email
+let mailOptions = {
+from: '"Your Name" <youremail@gmail.com>',
+to: 'recipient@example.com',
+subject: 'Test Nodemailer với Gmail',
+text: 'Đây là email test gửi từ Nodemailer!'
+};
+
+// Gửi mail
+transporter.sendMail(mailOptions)
+.then(info => console.log('Email sent: ' + info.response))
+.catch(err => console.error('Error:', err));
