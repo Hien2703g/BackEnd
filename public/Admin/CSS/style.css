@@ -30,7 +30,14 @@
   width: calc(100% - 180px);
 }
 /* End Body */
-
+/* Footer */
+.footer {
+  background-color: #32bce6;
+  padding: 10px 20px;
+  text-align: center;
+  font-weight: 600;
+}
+/* End Footer */
 /* Sider */
 .sider .inner-menu ul {
   list-style: none;

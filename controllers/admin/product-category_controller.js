@@ -3,7 +3,7 @@ const ProductCategory = require("../../models/product-category.model");
 const systemConfig = require("../../config/system");
 const filterStatusHelper = require("../../Helper/filterStatus");
 const SearchHelper = require("../../Helper/search");
-const PagitationHelper = require("../../Helper/pagitation");
+const PagitationHelper = require("../../Helper/pagination");
 const createTreeHelper = require("../../Helper/createTree");
 
 // [Get] / admin / products-category;

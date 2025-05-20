@@ -20,7 +20,7 @@ module.exports.create = async (req, res) => {
 };
 //[POST]/amdin/roles/ceate
 module.exports.createPost = async (req, res) => {
-  console.log(req.body);
+  // console.log(req.body);
   const record = new Role(req.body);
   await record.save();
   req.flash("success", "Tạo mới quyền thành công!!!");
@@ -111,7 +111,7 @@ module.exports.permissionsPatch = async (req, res) => {
   try {
     // console.log(req.body);
     const permissions = JSON.parse(req.body.permissions);
-    console.log(permissions);
+    // console.log(permissions);
     // res.send("OK");
     for (const item of permissions) {
       await Role.updateOne(

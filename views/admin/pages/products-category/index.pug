@@ -1,7 +1,7 @@
 extends ../../layouts/default.pug
 include ../../mixins/filterStatus.pug
 include ../../mixins/search.pug
-include ../../mixins/pagitation.pug
+include  ../../mixins/pagination.pug
 include ../../mixins/form-change-multi.pug
 include ../../mixins/alert.pug
 include ../../mixins/sort.pug
@@ -56,6 +56,7 @@ block main
 
                     tbody 
                         +table-tree(records) 
+        //- +Pagitation(pagitation) 
         form(
             action=""
             method="POST"

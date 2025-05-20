@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const postSchema = new mongoose.Schema(
+const articleSchema = new mongoose.Schema(
   {
     account_id: String,
     title: String,
@@ -14,6 +14,6 @@ const postSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const Post = mongoose.model("Post", postSchema, "post");
+const Article = mongoose.model("Article", articleSchema, "article");
 
-module.exports = Post;
+module.exports = Article;

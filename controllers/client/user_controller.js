@@ -77,7 +77,7 @@ module.exports.loginPost = async (req, res) => {
     user_id: user.id,
   });
   if (cart) {
-    console.log(cart);
+    // console.log(cart);
     res.cookie("cartId", cart.id);
   } else {
     //Lưu user_id vào collection carts

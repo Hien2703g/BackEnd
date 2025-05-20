@@ -4,12 +4,12 @@ header.header
     .container 
         .row.align-items-center
             .col-3.d-flex
-                //- .inner-logo
-                //-   a(href="/")
-                //-     img(src=settingGeneral.logo, alt="logo")
+                .inner-logo
+                    a(href="/")
+                        img(src=settingGeneral.logo, alt="logo")
                 .inner-website
                     a(href="/")
-                        h2 Trang chủ
+                        h2 #{settingGeneral.websiteName}
             .col-5 
                 form(
                     action="/search"
