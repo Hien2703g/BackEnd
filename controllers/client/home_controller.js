@@ -1,7 +1,16 @@
 const Product = require("../../models/product.model");
 const productsHelper = require("../../Helper/product");
+const Article = require("../../models/article.model");
+const Format = require("../../Helper/format");
 //[GET]/
 module.exports.index = async (req, res) => {
+  //article
+  //end article
+  const posts = await Article.findOne({ deleted: false }).sort({
+    position: "desc",
+  });
+  posts.createdAtStr = Format.formatDate(posts.createdAt);
+
   // Lấy ra sản phẩm nổi bật.
   const productsFeatured = await Product.find({
     featured: "1",
@@ -27,5 +36,6 @@ module.exports.index = async (req, res) => {
     // layoutProductsCategory: newProductsCategory,
     productsFeatured: newFeatured,
     productsNew: newproduct,
+    post: posts,
   });
 };

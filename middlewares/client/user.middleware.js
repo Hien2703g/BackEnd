@@ -6,7 +6,7 @@ module.exports.infoUser = async (req, res, next) => {
       tokenUser: req.cookies.tokenUser,
       deleted: false,
       status: "active",
-    }).select("-password");
+    });
     if (user) {
       res.locals.user = user;
     }

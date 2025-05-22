@@ -197,6 +197,30 @@
   border-radius: 5px;
 }
 /* End Product Detail */
+.section-products-featured {
+  margin-top: 20px;
+  border: 2px solid #ddd;
+  padding: 10px;
+  border-radius: 20px;
+}
+.section-products-new {
+  margin-top: 20px;
+  border: 2px solid #ddd;
+  padding: 10px;
+  border-radius: 20px;
+}
+/*Article*/
+.section-article {
+  margin-top: 20px;
+  border: 2px solid #ddd;
+  padding: 10px;
+  border-radius: 20px;
+}
+.section-article .container .notification-content {
+  font-family: "Roboto", sans-serif;
+}
+
+/* End Article */
 
 /* Show Alert */
 [show-alert] {

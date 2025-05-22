@@ -65,3 +65,23 @@ module.exports.resetPasswordPost = (req, res, next) => {
 
   next();
 };
+
+module.exports.editPatch = (req, res, next) => {
+  if (!req.body.fullName) {
+    req.flash("error", `Vui long nhap tên`);
+    res.redirect("back");
+    return;
+  }
+  if (!req.body.email) {
+    req.flash("error", `Vui long nhap email`);
+    res.redirect("back");
+    return;
+  }
+  if (req.body.password != req.body.confirmPassword) {
+    req.flash("error", `Xác nhận mật khẩu không trùng khớp!`);
+    res.redirect("back");
+    return;
+  }
+
+  next();
+};

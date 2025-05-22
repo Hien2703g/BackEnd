@@ -4,6 +4,16 @@ include ../../mixins/product-layout.pug
 
 
 block main
+    .section-article.my-5
+        .container 
+            .row.justify-content-center 
+                .col-12
+                    +box-head("Notification")
+
+                .col-12
+                    .notification-box.mb-3
+                        h4(class="notification-title") #{post.title}
+                        div(class="notification-content") !{post.content}   
     .section-products-featured.my-5
         .container
             .row
