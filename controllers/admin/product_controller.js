@@ -85,19 +85,24 @@ module.exports.index = async (req, res) => {
 
 // [PATCH]/admin/products/change-status/:status/:id
 module.exports.changeStatus = async (req, res) => {
-  // console.log(req.params);
-  const status = req.params.status;
-  const id = req.params.id;
-  const updatedBy = {
-    account_id: res.locals.user.id,
-    updatedAt: new Date(),
-  };
-  await Product.updateOne(
-    { _id: id },
-    { status: status, $push: { updatedBy: updatedBy } }
-  );
-  req.flash("success", "Cập nhật trạng thái thành công!");
-  res.redirect("back");
+  try {
+    // console.log(req.params);
+    const status = req.params.status;
+    const id = req.params.id;
+    const updatedBy = {
+      account_id: res.locals.user.id,
+      updatedAt: new Date(),
+    };
+    await Product.updateOne(
+      { _id: id },
+      { status: status, $push: { updatedBy: updatedBy } }
+    );
+    req.flash("success", "Cập nhật trạng thái thành công!");
+    res.redirect("back");
+  } catch (error) {
+    req.flash("error", "Cập nhật trạng thái thất bại!");
+    res.redirect(`${systemConfig.prefixAdmin}/products`);
+  }
 };
 
 // [PATCH] /admin /products/change - multi;

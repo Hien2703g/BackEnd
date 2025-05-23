@@ -25,7 +25,9 @@
             if (role.permissions.includes("accounts_view"))
                 li 
                     a(href=`${prefixAdmin}/accounts`) Accounts
-
+            if (role.permissions.includes("users_view"))
+                li 
+                    a(href=`${prefixAdmin}/users`) Users
             if (role.permissions.includes("setting-general_view"))
                 li 
                     a(href=`${prefixAdmin}/settings/general`) Setting general

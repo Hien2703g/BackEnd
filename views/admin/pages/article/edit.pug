@@ -1,6 +1,6 @@
 extend ../../layouts/default.pug
 block main
-    if(role.permissions.includes("articles_create"))
+    if(role.permissions.includes("articles_edit"))
         h3(class="card-title") Chỉnh sửa thông báo
         form(action=`/admin/articles/edit/${post.id}?_method=PATCH`, method="post")
             div(class="mb-3")

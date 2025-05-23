@@ -16,3 +16,17 @@ mixin sort()
             class="btn btn-danger mt-2"
             sort-clear
         ) Clear
+mixin sortUser()
+    div(sort)
+        select(
+            class="form-control"
+            name="sort"
+            sort-select
+        ) 
+            option(value="fullName-asc") Tiêu đề A-Z 
+            option(value="fullName-desc") Tiêu đề Z-A 
+
+        button(
+            class="btn btn-danger mt-2"
+            sort-clear
+        ) Clear
