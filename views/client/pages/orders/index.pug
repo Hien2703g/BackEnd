@@ -10,3 +10,46 @@ block main
         .row
             .col-12 
                 +box-head(pageTitle)
+        .row 
+            table(
+                class="table table-hover table-sm"
+                checkbox-multi
+            )
+                thead
+                    tr 
+                        th STT 
+                        th Họ tên   
+                        th SĐT
+                        th address 
+                        th Sản phẩm
+                        th Trạng thái 
+                        th Hành động
+
+                tbody 
+                    each item, index in records
+                        tr  
+                            td #{index+1}
+                            td #{item.userInfo.fullName}
+                            td #{item.userInfo.phone}
+                            td #{item.userInfo.address}
+                            td 
+                                if(item.products.length>0)
+                                    each product, index  in item.products
+                                        div
+                                            p Tên: #{product.productInfo.title}
+                                            p SL: #{product.quantity}
+
+                            td 
+                                if(item.status == "initial")
+                                    span(class="badge text-bg-light") Chuẩn bị
+                                else if(item.status == "handle")
+                                    span(class="badge text-bg-warning") Đang xử lý
+                                else if(item.status == "complete")
+                                    span(class="badge text-bg-success") Đã hoàn thành 
+                                else 
+                                    span(class="badge text-bg-danger") Từ chối  
+                            td 
+                                a(
+                                    href=`/order/detail/${item.id}`
+                                    class="btn btn-secondary btn-sm"
+                                    ) Chi tiết 

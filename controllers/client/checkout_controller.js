@@ -1,13 +1,13 @@
 const Cart = require("../../models/cart.model");
 const Product = require("../../models/product.model");
 const Order = require("../../models/order.model");
+const User = require("../../models/user.model");
 
 const productsHelper = require("../../Helper/product");
 
 // [GET] /checkout
 module.exports.index = async (req, res) => {
   const cartId = req.cookies.cartId;
-
   const cart = await Cart.findOne({
     _id: cartId,
   });
@@ -42,7 +42,12 @@ module.exports.index = async (req, res) => {
 module.exports.order = async (req, res) => {
   const cartId = req.cookies.cartId;
   const userInfo = req.body;
-
+  const user = await User.findOne({
+    tokenUser: req.cookies.tokenUser,
+    deleted: false,
+    status: "active",
+  });
+  // console.log(user);
   const cart = await Cart.findOne({
     _id: cartId,
   });
@@ -68,6 +73,7 @@ module.exports.order = async (req, res) => {
   }
 
   const objectOrder = {
+    user_id: user.id,
     cart_id: cartId,
     userInfo: userInfo,
     name: userInfo.fullName,

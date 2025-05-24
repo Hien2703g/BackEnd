@@ -55,11 +55,8 @@ module.exports.index = async (req, res) => {
       }).select("title thumbnail");
       // console.log(productInfo);
       product.productInfo = productInfo;
-      // record.product = product;
       // console.log(product.productInfo.title);
     }
-
-    // console.log(record);
   }
   res.render("admin/pages/orders/index", {
     pageTitle: "Đơn hàng",

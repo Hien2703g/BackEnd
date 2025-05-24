@@ -62,9 +62,9 @@ block main
                                 td 
                                     if(item.products.length>0)
                                         each product, index  in item.products
-                                            p
-                                                span Tên: #{product.productInfo.title}
-                                                span SL: #{product.quantity}
+                                            div
+                                                p Tên: #{product.productInfo.title}
+                                                p SL: #{product.quantity}
 
                                 td 
                                     if(item.status == "initial")
