@@ -118,11 +118,11 @@ module.exports.deleteItem = async (req, res) => {
     req.flash("success", `Đã xóa tài khoản người dùng thành công!!!`);
     res.redirect("back");
   } catch (error) {
-    req.flash("error", "Hành động xóa người thất bại!");
+    req.flash("error", "Hành động xóa tài khoản người dùng thất bại!");
     res.redirect(`${systemConfig.prefixAdmin}/users`);
   }
 };
-// [GET] /admin/Account/detail/:id
+// [GET] /admin/user/detail/:id
 module.exports.detail = async (req, res) => {
   try {
     const find = {

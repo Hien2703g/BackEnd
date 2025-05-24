@@ -4,6 +4,10 @@ const orderSchema = new mongoose.Schema(
   {
     // user_id: String,
     cart_id: String,
+    name: {
+      type: String,
+      default: "",
+    },
     userInfo: {
       fullName: String,
       phone: String,
@@ -20,7 +24,18 @@ const orderSchema = new mongoose.Schema(
     status: {
       type: String,
       default: "initial",
+      // handle, complete,refuse,
     },
+    deletedBy: {
+      account_id: String,
+      deletedAt: Date,
+    },
+    updatedBy: [
+      {
+        account_id: String,
+        updatedAt: Date,
+      },
+    ],
     deleted: {
       type: Boolean,
       default: false,

@@ -1,0 +1,98 @@
+extends ../../layouts/default.pug  
+include ../../mixins/filterStatus.pug
+include ../../mixins/search.pug
+include ../../mixins/pagination.pug
+include ../../mixins/alert.pug
+include ../../mixins/sort.pug
+include ../../mixins/moment.pug
+include ../../mixins/handleOrder.pug
+block main
+    +alert-success(5000)
+    +alert-error(5000)
+    if(role.permissions.includes("orders_view"))
+        h1(class="mb-4") Danh sách đơn hàng
+        .card.mb-3 
+            .card-header Bộ lọc và tìm kiếm.
+            .card-body 
+                .row
+                    //- .col-6
+                    //-     // mixin filterStarus
+                    //-     +filter-status(filterStatus)
+                    .col-6
+                        +searchHelper(keyword)
+        .card.mb-3 
+            .card-header Danh sách 
+            .card-body 
+                .row 
+                    .col-8
+                        if(role.permissions.includes("orders_edit"))
+                            +form-handle-multi(`${prefixAdmin}/orders/change-multi?_method=PATCH`)
+                table(
+                    class="table table-hover table-sm"
+                    checkbox-multi
+                )
+                    thead
+                        tr 
+                            th  
+                                input(
+                                    type="checkbox"
+                                    name="checkAll"
+                                )
+                            th STT 
+                            th Họ tên   
+                            th SĐT
+                            th address 
+                            th Sản phẩm
+                            th Trạng thái 
+                            th Hành động
+
+                    tbody 
+                        each item, index in records
+                            tr  
+                                td 
+                                    input(
+                                        type="checkbox" 
+                                        name="id"
+                                        value=item.id
+                                    )
+                                td #{index+1}
+                                td #{item.userInfo.fullName}
+                                td #{item.userInfo.phone}
+                                td #{item.userInfo.address}
+                                td 
+                                    if(item.products.length>0)
+                                        each product, index  in item.products
+                                            p
+                                                span Tên: #{product.productInfo.title}
+                                                span SL: #{product.quantity}
+
+                                td 
+                                    if(item.status == "initial")
+                                        span(class="badge text-bg-light") Chuẩn bị
+                                    else if(item.status == "handle")
+                                        span(class="badge text-bg-warning") Đang xử lý
+                                    else if(item.status == "complete")
+                                        span(class="badge text-bg-success") Đã hoàn thành 
+                                    else 
+                                        span(class="badge text-bg-danger") Từ chối
+                                td 
+                                    a(
+                                        href=`${prefixAdmin}/orders/detail/${item.id}`
+                                        class="btn btn-secondary btn-sm"
+                                        ) Chi tiết
+                                    if(role.permissions.includes("orders_delete"))
+                                        button(
+                                            class="btn btn-danger btn-sm ml-1"
+                                            button-delete
+                                            data-id=item.id
+                                        ) Xoá
+        +Pagitation(pagitation) 
+        form(
+            action=""
+            method="POST"
+            id="form-delete-item"
+            data-path=`${prefixAdmin}/orders/delete`
+        )  
+        script(src="/Admin/Js/orderScript.js")
+    else 
+        h1 Bạn không có quyền

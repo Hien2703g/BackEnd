@@ -70,6 +70,7 @@ module.exports.order = async (req, res) => {
   const objectOrder = {
     cart_id: cartId,
     userInfo: userInfo,
+    name: userInfo.fullName,
     products: products,
   };
 
@@ -87,6 +88,7 @@ module.exports.order = async (req, res) => {
 
   res.redirect(`/checkout/success/${order.id}`);
 };
+
 // [GET] /checkout/success/:orderId
 module.exports.success = async (req, res) => {
   const order = await Order.findOne({
@@ -97,7 +99,21 @@ module.exports.success = async (req, res) => {
     const productInfo = await Product.findOne({
       _id: product.product_id,
     }).select("title thumbnail");
-
+    const item = await Product.findOne({
+      _id: product.product_id,
+    });
+    // console.log(item.stock);
+    // console.log(product.quantity);
+    item.stock = parseInt(item.stock) - parseInt(product.quantity);
+    // console.log(item.stock);
+    await Product.updateOne(
+      {
+        _id: product.product_id,
+      },
+      {
+        stock: item.stock,
+      }
+    );
     product.productInfo = productInfo;
 
     productsHelper.priceNewProduct(product);
