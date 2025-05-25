@@ -63,7 +63,7 @@ module.exports.delete = async (req, res) => {
 module.exports.edit = async (req, res) => {
   const postId = req.params.id;
   const post = await Article.findOne({ _id: postId });
-  console.log(post);
+  // console.log(post);
   res.render("admin/pages/article/edit", {
     pageTitle: "Edit Article",
     post: post,
