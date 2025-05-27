@@ -5,45 +5,60 @@ const Role = require("../../models/role.model");
 const systemConfig = require("../../config/system");
 // [GET]/amdin/accounts
 module.exports.index = async (req, res) => {
-  let find = {
-    deleted: false,
-  };
-  const records = await Account.find(find).select("-password -token");
-  for (const record of records) {
-    const role = await Role.findOne({
-      _id: record.role_id,
+  try {
+    let find = {
       deleted: false,
+    };
+    const records = await Account.find(find).select("-password -token");
+    for (const record of records) {
+      const role = await Role.findOne({
+        _id: record.role_id,
+        deleted: false,
+      });
+      record.role = role;
+    }
+    res.render("admin/pages/accounts/index.pug", {
+      pageTitle: "Danh sách tài khoản",
+      records: records,
     });
-    record.role = role;
+    // res.send("Trang tong quan");
+  } catch (error) {
+    req.flash("error", `Hành động thất bại`);
+    res.redirect(`${systemConfig.prefixAdmin}/dashboard`);
   }
-  res.render("admin/pages/accounts/index.pug", {
-    pageTitle: "Danh sách tài khoản",
-    records: records,
-  });
-  // res.send("Trang tong quan");
 };
 // [PATCH]/admin/products/change-status/:status/:id
 module.exports.changeStatus = async (req, res) => {
-  // console.log(req.params);
-  const status = req.params.status;
-  const id = req.params.id;
-  await Account.updateOne({ _id: id }, { status: status });
-  req.flash("success", "Cập nhật trạng thái thành công!");
-  res.redirect("back");
+  try {
+    // console.log(req.params);
+    const status = req.params.status;
+    const id = req.params.id;
+    await Account.updateOne({ _id: id }, { status: status });
+    req.flash("success", "Cập nhật trạng thái thành công!");
+    res.redirect("back");
+  } catch (error) {
+    req.flash("error", `tài khoản không tồn tại`);
+    res.redirect(`${systemConfig.prefixAdmin}/accounts`);
+  }
 };
 //[GET] admin/accounts/create
 module.exports.create = async (req, res) => {
-  const roles = await Role.find({ deleted: false });
-  let find = {
-    deleted: false,
-  };
-  const records = await Account.find(find);
+  try {
+    const roles = await Role.find({ deleted: false });
+    let find = {
+      deleted: false,
+    };
+    const records = await Account.find(find);
 
-  res.render("admin/pages/accounts/create", {
-    pageTitle: "Thêm mới sản phẩm",
-    records: records,
-    roles: roles,
-  });
+    res.render("admin/pages/accounts/create", {
+      pageTitle: "Thêm mới sản phẩm",
+      records: records,
+      roles: roles,
+    });
+  } catch (error) {
+    req.flash("error", `lỗi`);
+    res.redirect(`${systemConfig.prefixAdmin}/accounts`);
+  }
 };
 
 //[POST] admin/accounts/create
@@ -130,19 +145,24 @@ module.exports.editPatch = async (req, res) => {
 };
 
 module.exports.deleteItem = async (req, res) => {
-  const id = req.params.id;
-  await Account.updateOne(
-    {
-      _id: id,
-    },
-    {
-      deleted: true,
-    }
-  );
+  try {
+    const id = req.params.id;
+    await Account.updateOne(
+      {
+        _id: id,
+      },
+      {
+        deleted: true,
+      }
+    );
 
-  req.flash("success", `Đã xoá thành công!`);
+    req.flash("success", `Đã xoá thành công!`);
 
-  res.redirect("back");
+    res.redirect("back");
+  } catch (error) {
+    req.flash("error", `tài khoản không cập nhập thành công`);
+    res.redirect(`back`);
+  }
 };
 
 // [GET] /admin/Account/detail/:id

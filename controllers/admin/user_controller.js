@@ -7,76 +7,81 @@ const PagitationHelper = require("../../Helper/pagination");
 const systemConfig = require("../../config/system");
 // [GET]/amdin/users
 module.exports.index = async (req, res) => {
-  // FilterSatus
-  const filterStatus = filterStatusHelper(req.query);
-  let find = {
-    deleted: false,
-  };
-  if (req.query.status) {
-    find.status = req.query.status;
-  }
-  //End FilterStatus
-
-  // Search
-  const objectSearch = SearchHelper(req.query);
-  if (objectSearch.regex) {
-    find.fullName = objectSearch.regex;
-  }
-  //End Search
-
-  const countUsers = await User.countDocuments(find);
-  //Pagitation
-  let objectPagitation = PagitationHelper(
-    req.query,
-    {
-      limitItem: 5,
-      currentPage: 1,
-    },
-    countUsers
-  );
-  //Sort
-  let sort = {};
-  if (req.query.sortKey && req.query.sortValue) {
-    sort[req.query.sortKey] = req.query.sortValue;
-  } else {
-    sort.fullName = "asc";
-  }
-
-  //End Sort
-  const records = await User.find(find)
-    .sort(sort)
-    .limit(objectPagitation.limitItem)
-    .skip(objectPagitation.skip)
-    .select("-password -token");
-
-  for (const record of records) {
-    //Lấy ra thông tin người tạo
-    // const account = await Account.findOne({
-    //   _id: record.createdBy.account_id,
-    // });
-    // // console.log(user);
-    // if (account) {
-    //   record.accountFullName = account.fullName;
-    // }
-    // Lấy thông tin người cập nhật gần nhất
-    //Lấy ra thông tin người cập nhật gần nhất
-    const updatedBy = record.updatedBy[record.updatedBy.length - 1];
-    if (updatedBy) {
-      const userUpdated = await Account.findOne({
-        _id: updatedBy.account_id,
-      });
-
-      updatedBy.accountFullName = userUpdated.fullName;
+  try {
+    // FilterSatus
+    const filterStatus = filterStatusHelper(req.query);
+    let find = {
+      deleted: false,
+    };
+    if (req.query.status) {
+      find.status = req.query.status;
     }
+    //End FilterStatus
+
+    // Search
+    const objectSearch = SearchHelper(req.query);
+    if (objectSearch.regex) {
+      find.fullName = objectSearch.regex;
+    }
+    //End Search
+
+    const countUsers = await User.countDocuments(find);
+    //Pagitation
+    let objectPagitation = PagitationHelper(
+      req.query,
+      {
+        limitItem: 5,
+        currentPage: 1,
+      },
+      countUsers
+    );
+    //Sort
+    let sort = {};
+    if (req.query.sortKey && req.query.sortValue) {
+      sort[req.query.sortKey] = req.query.sortValue;
+    } else {
+      sort.fullName = "asc";
+    }
+
+    //End Sort
+    const records = await User.find(find)
+      .sort(sort)
+      .limit(objectPagitation.limitItem)
+      .skip(objectPagitation.skip)
+      .select("-password -token");
+
+    for (const record of records) {
+      //Lấy ra thông tin người tạo
+      // const account = await Account.findOne({
+      //   _id: record.createdBy.account_id,
+      // });
+      // // console.log(user);
+      // if (account) {
+      //   record.accountFullName = account.fullName;
+      // }
+      // Lấy thông tin người cập nhật gần nhất
+      //Lấy ra thông tin người cập nhật gần nhất
+      const updatedBy = record.updatedBy[record.updatedBy.length - 1];
+      if (updatedBy) {
+        const userUpdated = await Account.findOne({
+          _id: updatedBy.account_id,
+        });
+
+        updatedBy.accountFullName = userUpdated.fullName;
+      }
+    }
+    res.render("admin/pages/user/index.pug", {
+      pageTitle: "Danh sách tài khoản người dùng",
+      records: records,
+      filterStatus: filterStatus,
+      keyword: objectSearch.keyword,
+      pagitation: objectPagitation,
+    });
+    // res.send("Trang tong quan");
+  } catch (error) {
+    req.flash("error", `Loi `);
+    res.redirect(`${systemConfig.prefixAdmin}/dashboard`);
   }
-  res.render("admin/pages/user/index.pug", {
-    pageTitle: "Danh sách tài khoản người dùng",
-    records: records,
-    filterStatus: filterStatus,
-    keyword: objectSearch.keyword,
-    pagitation: objectPagitation,
-  });
-  // res.send("Trang tong quan");
 };
 
 // [PATCH]/admin/products/change-status/:status/:id

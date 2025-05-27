@@ -1,8 +1,11 @@
-extend ../../layouts/default.pug
+extends ../../layouts/default.pug
 include  ../../mixins/pagination.pug
+include ../../mixins/alert.pug
 //- block styles
     link(rel="stylesheet" href="/admin/css/create-post.css")
 block main
+    +alert-success(5000)
+    +alert-error(5000)
     if(role.permissions.includes("articles_view"))
         .main
             .article

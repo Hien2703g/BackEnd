@@ -6,31 +6,40 @@ const User = require("../../models/user.model");
 const productsHelper = require("../../Helper/product");
 // [GET] /order
 module.exports.index = async (req, res) => {
-  const user = await User.findOne({
-    tokenUser: req.cookies.tokenUser,
-    deleted: false,
-    status: "active",
-  });
-  let find = {
-    user_id: user.id,
-    deleted: false,
-  };
-  const records = await Order.find(find);
-  for (const record of records) {
-    for (const product of record.products) {
-      const productInfo = await Product.findOne({
-        _id: product.product_id,
-      }).select("title thumbnail");
-      // console.log(productInfo);
-      product.productInfo = productInfo;
-      // record.product = product;
-      // console.log(product.productInfo.title);
+  try {
+    const user = await User.findOne({
+      tokenUser: req.cookies.tokenUser,
+      deleted: false,
+      status: "active",
+    });
+    let find = {
+      user_id: user.id,
+      deleted: false,
+    };
+    const records = await Order.find(find);
+    for (const record of records) {
+      for (const product of record.products) {
+        const productInfo = await Product.findOne({
+          _id: product.product_id,
+        }).select("title thumbnail");
+        // console.log(productInfo);
+        product.productInfo = productInfo;
+        // record.product = product;
+        // console.log(product.productInfo.title);
+      }
     }
+    res.render("client/pages/orders/index", {
+      pageTitle: "Đơn hàng ",
+      records: records,
+    });
+  } catch (error) {
+    req.flash("error", "Hành động xem thất bại!!!");
+    req.flash(
+      "error",
+      "Bạn chưa đăng nhập, hãy đăng nhập để xem thêm chi tiết"
+    );
+    res.redirect(`/`);
   }
-  res.render("client/pages/orders/index", {
-    pageTitle: "Đơn hàng ",
-    records: records,
-  });
 };
 
 // [GET] order/detail/:orderId

@@ -1,8 +1,9 @@
 extends ../../layouts/default.pug
-
+include ../../mixins/alert.pug
 block main
     h1 Trang tổng quan
-
+    +alert-success(5000)
+    +alert-error(5000)
     .row.mt-4 
         .col-12 
             .card.mb-4 
@@ -53,3 +54,12 @@ block main
                     p Số lượng: <b>#{statistic.user.total}</b>
                     p Hoạt động: <b>#{statistic.user.active}</b>
                     p Dừng hoạt động: <b>#{statistic.user.inactive}</b>
+        .col-6 
+            .card.mb-4 
+                .card-header Đơn đặt hàng
+                .card-body          
+                    p Số lượng: <b>#{statistic.order.total}</b>
+                    p Đã đặt: <b>#{statistic.order.initial}</b>
+                    p Đang xử lý: <b>#{statistic.order.handle}</b>
+                    p Đã hoàn thành: <b>#{statistic.order.complete}</b>
+                    p Đã từ chối: <b>#{statistic.order.refuse}</b>

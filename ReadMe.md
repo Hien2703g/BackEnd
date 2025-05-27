@@ -110,3 +110,18 @@ text: 'Đây là email test gửi từ Nodemailer!'
 transporter.sendMail(mailOptions)
 .then(info => console.log('Email sent: ' + info.response))
 .catch(err => console.error('Error:', err));
+
+// SocketIO
+SOCKETIO: https://socket.io/get-started/chat
+npm i socket.io
+Nhúng http
+const http = require('http');
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
+
+connect:
+io.on('connection', (socket) => {
+console.log('a user connected');
+});
+Sau khi connect, app sẽ đc gọi trong server

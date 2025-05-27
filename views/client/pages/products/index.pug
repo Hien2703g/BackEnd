@@ -10,5 +10,10 @@ block main
         .row
             .col-12 
                 +box-head(pageTitle)
-
-        +product-grid(products)
+                if(category)
+                    div 
+                        h2 !{category.description}
+        .row
+            .col-12
+                h1 Danh sách sản phẩm
+                +product-grid(products)

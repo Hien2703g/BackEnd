@@ -7,10 +7,20 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const systemConfig = require("./config/system");
 const database = require("./config/database");
-const moment = require("moment"); // require
+const moment = require("moment");
+const http = require("http");
+const { Server } = require("socket.io");
+
 require("dotenv").config();
 const app = express();
 
+//socketIO
+const server = http.createServer(app);
+const io = new Server(server);
+io.on("connection", (socket) => {
+  console.log("a user connected");
+});
+//end SocketIO
 //flash
 app.use(cookieParser("keyboard cat"));
 app.use(session({ cookie: { maxAge: 60000 } }));
@@ -49,8 +59,9 @@ app.get("*", (req, res) => {
   });
 });
 
-app.listen(port, () => {
+// app.listen(port, () => {
+//   console.log(`App listening on port ${port}`);
+// });
+server.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
-
-// test

@@ -3,6 +3,7 @@ include ../../mixins/alert.pug
 include ../../mixins/select-tree.pug 
 
 block main 
+    +alert-success(5000)
     +alert-error(5000)
     if(role.permissions.includes("products-category_create"))
         h1(class="mb-4") Thêm danh mục mới

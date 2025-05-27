@@ -1,6 +1,9 @@
 extends ../../layouts/default.pug  
+include ../../mixins/alert.pug
 
 block main 
+    +alert-success(5000)
+    +alert-error(5000)
     if(role.permissions.includes("accounts_view"))
         if(user.fullName)
             h1 Thông tin của tài khoản: <b>#{user.fullName}</b>

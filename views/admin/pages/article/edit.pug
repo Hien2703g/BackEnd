@@ -1,5 +1,8 @@
-extend ../../layouts/default.pug
+extends ../../layouts/default.pug
+include ../../mixins/alert.pug
 block main
+    +alert-success(5000)
+    +alert-error(5000)
     if(role.permissions.includes("articles_edit"))
         h3(class="card-title") Chỉnh sửa thông báo
         form(action=`/admin/articles/edit/${post.id}?_method=PATCH`, method="post")

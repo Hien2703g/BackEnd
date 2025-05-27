@@ -1,0 +1,35 @@
+extends ../../layouts/default.pug
+include ../../mixins/box-head.pug
+include ../../mixins/product-layout.pug
+include ../../mixins/alert.pug
+
+block main
+    +alert-success(5000)
+    +alert-error(5000)
+    .container.my-3 
+        .row
+            .col-12
+                +box-head("Chat")
+        .row 
+            .col-12 
+                .chat 
+                    .inner-body 
+                        .inner-incoming 
+                            .inner-name Hello 
+                            .inner-content 
+                                | HEEHEHHE
+                        .inner-outgoing 
+                            .inner-content 
+                                | Xinchao
+                    .inner-foot 
+                        form(
+                            class="inner-form"
+                            action=""
+                        )
+                            input(
+                                type="text"
+                                placeholder="Nhập nội dung.........."
+                                name="content"
+                            )
+                            button 
+                                i.fa-solid.fa-paper-plane

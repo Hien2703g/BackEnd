@@ -1,7 +1,13 @@
 extends ../../layouts/default.pug 
+include ../../mixins/alert.pug
+//- +alert-success(5000)
+//- +alert-error(5000)
 
 block main 
     //- div #{role}
+    +alert-success(5000)
+    +alert-error(5000)
+
     if (role.permissions.includes("accounts_view"))
         if (account.fullName)
             h1(class="mb-4") #{account.fullName}

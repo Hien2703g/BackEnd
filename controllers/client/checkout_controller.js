@@ -73,12 +73,15 @@ module.exports.order = async (req, res) => {
   }
 
   const objectOrder = {
-    user_id: user.id,
+    user_id: "",
     cart_id: cartId,
     userInfo: userInfo,
     name: userInfo.fullName,
     products: products,
   };
+  if (user) {
+    objectOrder.user_id = user.id;
+  }
 
   const order = new Order(objectOrder);
   await order.save();

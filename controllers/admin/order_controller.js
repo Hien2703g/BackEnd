@@ -8,63 +8,68 @@ const systemConfig = require("../../config/system");
 const productsHelper = require("../../Helper/product");
 // [GET] admin/order
 module.exports.index = async (req, res) => {
-  // FilterSatus
-  const filterStatus = filterStatusHelper(req.query);
-  let find = {
-    deleted: false,
-  };
-  if (req.query.status) {
-    find.status = req.query.status;
-  }
-  //End FilterStatus
-
-  // Search
-  const objectSearch = SearchHelper(req.query);
-  if (objectSearch.regex) {
-    find.name = objectSearch.regex;
-  }
-  //End Search
-
-  const countOrder = await Order.countDocuments(find);
-  //Pagitation
-  let objectPagitation = PagitationHelper(
-    req.query,
-    {
-      limitItem: 5,
-      currentPage: 1,
-    },
-    countOrder
-  );
-  // //Sort
-  // let sort = {};
-  // if (req.query.sortKey && req.query.sortValue) {
-  //   sort[req.query.sortKey] = req.query.sortValue;
-  // } else {
-  //   sort.fullName = "asc";
-  // }
-
-  // //End Sort
-  const records = await Order.find(find)
-    // .sort(sort)
-    .limit(objectPagitation.limitItem)
-    .skip(objectPagitation.skip);
-  for (const record of records) {
-    for (const product of record.products) {
-      const productInfo = await Product.findOne({
-        _id: product.product_id,
-      }).select("title thumbnail");
-      // console.log(productInfo);
-      product.productInfo = productInfo;
-      // console.log(product.productInfo.title);
+  try {
+    // FilterSatus
+    const filterStatus = filterStatusHelper(req.query);
+    let find = {
+      deleted: false,
+    };
+    if (req.query.status) {
+      find.status = req.query.status;
     }
+    //End FilterStatus
+
+    // Search
+    const objectSearch = SearchHelper(req.query);
+    if (objectSearch.regex) {
+      find.name = objectSearch.regex;
+    }
+    //End Search
+
+    const countOrder = await Order.countDocuments(find);
+    //Pagitation
+    let objectPagitation = PagitationHelper(
+      req.query,
+      {
+        limitItem: 5,
+        currentPage: 1,
+      },
+      countOrder
+    );
+    // //Sort
+    // let sort = {};
+    // if (req.query.sortKey && req.query.sortValue) {
+    //   sort[req.query.sortKey] = req.query.sortValue;
+    // } else {
+    //   sort.fullName = "asc";
+    // }
+
+    // //End Sort
+    const records = await Order.find(find)
+      // .sort(sort)
+      .limit(objectPagitation.limitItem)
+      .skip(objectPagitation.skip);
+    for (const record of records) {
+      for (const product of record.products) {
+        const productInfo = await Product.findOne({
+          _id: product.product_id,
+        }).select("title thumbnail");
+        // console.log(productInfo);
+        product.productInfo = productInfo;
+        // console.log(product.productInfo.title);
+      }
+    }
+    res.render("admin/pages/orders/index", {
+      pageTitle: "Đơn hàng",
+      records: records,
+      ilterStatus: filterStatus,
+      keyword: objectSearch.keyword,
+      pagitation: objectPagitation,
+    });
+  } catch (error) {
+    req.flash("error", "Hành động xem thất bại");
+    res.redirect(`${systemConfig.prefixAdmin}/dashboard`);
   }
-  res.render("admin/pages/orders/index", {
-    pageTitle: "Đơn hàng",
-    records: records,
-    ilterStatus: filterStatus,
-    keyword: objectSearch.keyword,
-    pagitation: objectPagitation,
-  });
 };
 
 // [PATCH] /admin /orders/change - multi;
@@ -206,7 +211,7 @@ module.exports.deleteItem = async (req, res) => {
   }
 };
 
-// [GET] /admin/orders/:orderId
+// [GET] /admin//detail/:orderId
 module.exports.detail = async (req, res) => {
   try {
     const order = await Order.findOne({
