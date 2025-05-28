@@ -14,13 +14,16 @@ block main
             .col-12 
                 .chat 
                     .inner-body 
-                        .inner-incoming 
-                            .inner-name Hello 
-                            .inner-content 
-                                | HEEHEHHE
-                        .inner-outgoing 
-                            .inner-content 
-                                | Xinchao
+
+                        //- .inner-head
+                        //-     .inner-avata 
+                        //-     .inner-name
+                        each chat in chats 
+                            div(class=(chat.user_id==user.id?"inner-outgoing":"inner-incoming"))
+                                if(chat.user_id!=user.id)
+                                    .inner-name #{chat.infoUser.fullName}
+                                .inner-content 
+                                    | #{chat.content}
                     .inner-foot 
                         form(
                             class="inner-form"
@@ -28,8 +31,8 @@ block main
                         )
                             input(
                                 type="text"
-                                placeholder="Nhập nội dung.........."
+                                placeholder="Aa..."
                                 name="content"
                             )
-                            button 
-                                i.fa-solid.fa-paper-plane
+                            button(class="form-btn")
+                                <i class="fa-solid fa-paper-plane"></i> 

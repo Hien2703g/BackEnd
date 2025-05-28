@@ -11,7 +11,7 @@ const createTreeHelper = require("../../Helper/createTree");
 module.exports.index = async (req, res) => {
   try {
     // FilterSatus
-    const filterStatus = filterStatusHelper(req.query);
+    const filterStatus = filterStatusHelper.item(req.query);
     let find = {
       deleted: false,
     };

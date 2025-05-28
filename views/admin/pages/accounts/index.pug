@@ -43,7 +43,10 @@ block main
                                     )
                                 td #{item.fullName}
                                 //- td Tạm
-                                td #{item.role.title}
+                                if( item.role)
+                                    td #{item.role.title}
+                                else 
+                                    td(class="badge text-bg-danger") Quyền đã bị xóa
                                 td #{item.email}
                                 td
                                     if(role.permissions.includes("accounts_edit"))

@@ -1,4 +1,4 @@
-module.exports = (query) => {
+module.exports.item = (query) => {
   let filterStatus = [
     {
       name: "Tất cả",
@@ -24,4 +24,43 @@ module.exports = (query) => {
     filterStatus[index].class = "active";
   }
   return filterStatus;
+};
+module.exports.order = (query) => {
+  let filterStatusOrder = [
+    {
+      name: "Tất cả",
+      status: "",
+      class: "",
+    },
+    {
+      name: "Đang chuẩn bị",
+      status: "initial",
+      class: "",
+    },
+    {
+      name: "Đang xử lý",
+      status: "handle",
+      class: "",
+    },
+    {
+      name: "Hoàn thành",
+      status: "complete",
+      class: "",
+    },
+    {
+      name: "Từ chối",
+      status: "refuse",
+      class: "",
+    },
+  ];
+  if (query.status) {
+    const index = filterStatusOrder.findIndex(
+      (item) => item.status == query.status
+    );
+    filterStatusOrder[index].class = "active";
+  } else {
+    const index = filterStatusOrder.findIndex((item) => item.status == "");
+    filterStatusOrder[index].class = "active";
+  }
+  return filterStatusOrder;
 };

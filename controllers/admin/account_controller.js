@@ -13,9 +13,12 @@ module.exports.index = async (req, res) => {
     for (const record of records) {
       const role = await Role.findOne({
         _id: record.role_id,
-        deleted: false,
+        // deleted: false,
       });
-      record.role = role;
+      if (!role.deleted) {
+        record.role = role;
+      }
+      // console.log(record.role);
     }
     res.render("admin/pages/accounts/index.pug", {
       pageTitle: "Danh sách tài khoản",

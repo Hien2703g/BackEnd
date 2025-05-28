@@ -17,10 +17,9 @@ const app = express();
 //socketIO
 const server = http.createServer(app);
 const io = new Server(server);
-io.on("connection", (socket) => {
-  console.log("a user connected");
-});
+global._io = io;
 //end SocketIO
+
 //flash
 app.use(cookieParser("keyboard cat"));
 app.use(session({ cookie: { maxAge: 60000 } }));

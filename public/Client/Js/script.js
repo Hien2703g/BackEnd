@@ -1,4 +1,4 @@
-console.log("Ok");
+// console.log("Ok");
 //Show Alert
 const showAlert = document.querySelector("[show-alert]");
 if (showAlert) {

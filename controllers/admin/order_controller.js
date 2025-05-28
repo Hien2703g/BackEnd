@@ -10,7 +10,7 @@ const productsHelper = require("../../Helper/product");
 module.exports.index = async (req, res) => {
   try {
     // FilterSatus
-    const filterStatus = filterStatusHelper(req.query);
+    const filterStatus = filterStatusHelper.order(req.query);
     let find = {
       deleted: false,
     };
@@ -62,9 +62,9 @@ module.exports.index = async (req, res) => {
     res.render("admin/pages/orders/index", {
       pageTitle: "Đơn hàng",
       records: records,
-      ilterStatus: filterStatus,
       keyword: objectSearch.keyword,
       pagitation: objectPagitation,
+      filterStatus: filterStatus,
     });
   } catch (error) {
     req.flash("error", "Hành động xem thất bại");

@@ -267,6 +267,7 @@
   border: 1px solid #777;
   border-radius: 15px;
   overflow: hidden;
+  /* min-width: 500px; */
   max-width: 800px;
   margin-left: auto;
   margin-right: auto;
