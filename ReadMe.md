@@ -128,3 +128,7 @@ Sau khi connect, app sẽ đc gọi trong server
 
 - emoji-picker-element
   https://github.com/nolanlawson/emoji-picker-element/blob/master/package.json
+
+Upload nhieu anh:
+npm i file-upload-with-preview
+https://www.npmjs.com/package/file-upload-with-preview
