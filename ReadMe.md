@@ -125,3 +125,6 @@ io.on('connection', (socket) => {
 console.log('a user connected');
 });
 Sau khi connect, app sẽ đc gọi trong server
+
+- emoji-picker-element
+  https://github.com/nolanlawson/emoji-picker-element/blob/master/package.json
