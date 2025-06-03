@@ -9,7 +9,7 @@ const systemConfig = require("../../config/system");
 module.exports.index = async (req, res) => {
   try {
     // FilterSatus
-    const filterStatus = filterStatusHelper(req.query);
+    const filterStatus = filterStatusHelper.item(req.query);
     let find = {
       deleted: false,
     };
@@ -79,7 +79,7 @@ module.exports.index = async (req, res) => {
     });
     // res.send("Trang tong quan");
   } catch (error) {
-    req.flash("error", `Loi `);
+    req.flash("error", `Loi users index `);
     res.redirect(`${systemConfig.prefixAdmin}/dashboard`);
   }
 };

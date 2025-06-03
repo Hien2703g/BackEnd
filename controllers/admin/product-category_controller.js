@@ -10,7 +10,7 @@ const createTreeHelper = require("../../Helper/createTree");
 module.exports.index = async (req, res) => {
   try {
     // FilterSatus
-    const filterStatus = filterStatusHelper(req.query);
+    const filterStatus = filterStatusHelper.item(req.query);
     let find = {
       deleted: false,
     };
@@ -37,7 +37,7 @@ module.exports.index = async (req, res) => {
       records: newRecords,
     });
   } catch (error) {
-    req.flash("error", `Hành động xem lỗi`);
+    req.flash("error", `Lỗi Catagory.index`);
     res.redirect(`${systemConfig.prefixAdmin}/dashboard`);
   }
 };
@@ -138,7 +138,7 @@ module.exports.create = async (req, res) => {
       records: newRecords,
     });
   } catch (error) {
-    req.flash("error", `Hành động lỗi`);
+    req.flash("error", `Hành động lỗi create_catagory`);
     res.redirect(`${systemConfig.prefixAdmin}/products-category`);
   }
 };

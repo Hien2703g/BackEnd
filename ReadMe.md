@@ -132,3 +132,6 @@ Sau khi connect, app sẽ đc gọi trong server
 Upload nhieu anh:
 npm i file-upload-with-preview
 https://www.npmjs.com/package/file-upload-with-preview
+
+Show hình ảnh toàn màn hình khi click vào:
+https://www.npmjs.com/package/viewerjs
