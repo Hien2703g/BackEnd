@@ -4,30 +4,31 @@ include ../../mixins/product-layout.pug
 include ../../mixins/alert.pug
 
 block main
-    +alert-success(5000)
-    +alert-error(5000)
-    .section-article.my-5
-        .container 
-            .row.justify-content-center 
-                .col-12
-                    +box-head("Notification")
+    .main
+        +alert-success(5000)
+        +alert-error(5000)
+        .section-article.my-5
+            .container 
+                .row.justify-content-center 
+                    .col-12
+                        +box-head("Notification")
 
-                .col-12
-                    .notification-box.mb-3
-                        h4(class="notification-title") #{post.title}
-                        div(class="notification-content") !{post.content}   
-    .section-products-featured.my-5
-        .container
-            .row
-                .col-12 
-                    +box-head("Sản phẩm nổi bật")
+                    .col-12
+                        .notification-box.mb-3
+                            h4(class="notification-title") #{post.title}
+                            div(class="notification-content") !{post.content}   
+        .section-products-featured.my-5
+            .container
+                .row
+                    .col-12 
+                        +box-head("Sản phẩm nổi bật")
 
-            +product-grid(productsFeatured)
+                +product-grid(productsFeatured)
 
-    .section-products-new.my-5
-        .container
-            .row
-                .col-12 
-                    +box-head("Sản phẩm mới")
+        .section-products-new.my-5
+            .container
+                .row
+                    .col-12 
+                        +box-head("Sản phẩm mới")
 
-            +product-grid(productsNew)
+                +product-grid(productsNew)

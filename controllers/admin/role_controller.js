@@ -66,7 +66,7 @@ module.exports.edit = async (req, res) => {
     const role = await Role.findOne(find);
     res.render("admin/pages/roles/edit", {
       pageTitle: "Chinh sua quyen",
-      role: role,
+      roles: role,
     });
   } catch (error) {
     req.flash("error", `Nhóm quyền này không tồn tại`);

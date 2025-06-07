@@ -4,12 +4,13 @@ include ../../mixins/alert.pug
 block main 
     +alert-error(5000)
     +alert-success(5000)
+    //- div #{role.permissions}
     if(role.permissions.includes("roles_edit"))
         h1(class="mb-4") Chỉnh sửa Nhóm quyền
 
 
         form(
-            action=`${prefixAdmin}/roles/edit/${role.id}?_method=PATCH`
+            action=`${prefixAdmin}/roles/edit/${roles.id}?_method=PATCH`
             method="POST"
         )
             div(class="form-group")
@@ -19,7 +20,7 @@ block main
                     class="form-control"
                     id="title"
                     name="title"
-                    value=role.title
+                    value=roles.title
                 )
             div(class="form-group")
                 label(for="desc") Mô tả
@@ -28,7 +29,7 @@ block main
                     class="form-control"
                     id="desc"
                     name="description"
-                    value=role.description
+                    value=roles.description
                 )
             div(class="form-group")
                 a(

@@ -41,7 +41,7 @@ module.exports.registerPost = async (req, res) => {
 module.exports.login = async (req, res) => {
   res.clearCookie("cartId");
   res.render("client/pages/user/login", {
-    pageTitle: "Đăng ký tài khoản",
+    pageTitle: "Đăng nhập tài khoản",
   });
 };
 // [POST] /user/login

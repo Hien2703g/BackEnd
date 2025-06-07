@@ -12,6 +12,7 @@ const checkoutRoutes = require("./checkout.route");
 const userRoutes = require("./user.route");
 const ordersRoutes = require("./order.route");
 const chatRoutes = require("./chat.route");
+const userSocialRoutes = require("./userSocial.route");
 
 module.exports = (app) => {
   app.use(categoryMiddleware.category);
@@ -27,4 +28,5 @@ module.exports = (app) => {
   app.use("/order", ordersRoutes);
   app.use("/user", userRoutes);
   app.use("/chat", authMiddleware.requireAuth, chatRoutes);
+  app.use("/userSocial", authMiddleware.requireAuth, userSocialRoutes);
 };
