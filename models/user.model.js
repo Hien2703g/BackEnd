@@ -25,6 +25,7 @@ const userSchema = new mongoose.Schema(
         room_chat_id: String,
       },
     ],
+    statusOnline: String,
     deletedBy: {
       account_id: String,
       deletedAt: Date,
