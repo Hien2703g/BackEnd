@@ -11,6 +11,10 @@ const ProductReviewSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    status: {
+      type: String,
+      default: "Yet",
+    },
     deletedAt: Date,
   },
   { timestamps: true }

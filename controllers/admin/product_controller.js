@@ -2,6 +2,8 @@ const { query, application } = require("express");
 const Product = require("../../models/product.model");
 const ProductCategory = require("../../models/product-category.model");
 const Account = require("../../models/account.model");
+const ProductReview = require("../../models/review_products.model");
+
 const systemConfig = require("../../config/system");
 const filterStatusHelper = require("../../Helper/filterStatus");
 const SearchHelper = require("../../Helper/search");
@@ -330,10 +332,31 @@ module.exports.detail = async (req, res) => {
     });
     const newCategory = createTreeHelper.tree(category);
     // console.log(product);
+    //hien thi danh gia
+    const reviews = await ProductReview.find({
+      product_slug: product.slug,
+      status: "done",
+    });
+    const countReview = await ProductReview.countDocuments({
+      product_slug: product.slug,
+      status: "done",
+    });
+    reviews.totalRank = 0;
+    for (const review of reviews) {
+      reviews.totalRank = reviews.totalRank + review.reviewValue;
+      review.createdAtStr = Format.formatDate(review.createdAt);
+    }
+    // console.log(reviews.totalRank);
+    if (countReview) {
+      reviews.TBReview = (reviews.totalRank / countReview).toFixed(2);
+      // console.log(reviews.TBReview);
+    }
+    // console.log(reviews);
     res.render("admin/pages/products/detail", {
       pageTitle: product.title,
       product: product,
       category: newCategory,
+      reviews: reviews,
     });
   } catch (error) {
     req.flash("error", `Sản phẩm không tồn tại`);

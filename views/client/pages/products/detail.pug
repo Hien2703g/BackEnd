@@ -63,16 +63,22 @@ block main
                 .col-12 
                     +box-head("Mô tả sản phẩm")
                     div(class="inner-desc") !{product.description}
-
-        .container.my-5 
-            .row 
-                .col-12 
-                    +box-head("Danh gia san pham")
-                    div(class="rank mb-3") <b> Rank: #{reviews.TBReview}</b>
-                    each review in reviews
-                        .box
-                            .content
-                                div(class="rank-box mb-3")
-                                    h4(class="rank-title") Nguoi danh gia: #{review.userName}
-                                    div(class="rank-content mb-3") !{review.reviewMessage}
-                                    div(class="create-date") #{review.createdAtStr}
+        if(reviews.length)
+            .container.my-5 
+                .row 
+                    .col-12 
+                        +box-head("Đánh giá sản phẩm")
+                        div(class="rank mb-3") <b> Rank: #{reviews.TBReview}</b>
+                        each review in reviews
+                            .box
+                                .content
+                                    div(class="rank-box mb-3")
+                                        h4(class="rank-title") Nguoi danh gia: #{review.userName}
+                                        div(class="rank-content mb-3") !{review.reviewMessage}
+                                        div(class="create-date") #{review.createdAtStr}
+        else 
+            .container.my-5 
+                .row 
+                    .col-12 
+                        +box-head("Đánh giá sản phẩm")
+                        h1 Chưa có đánh giá nào về sản phẩm

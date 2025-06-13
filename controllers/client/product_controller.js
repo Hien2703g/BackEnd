@@ -28,53 +28,55 @@ module.exports.index = async (req, res) => {
 };
 //[GET] /products/:slug
 module.exports.detail = async (req, res) => {
-  const find = {
-    deleted: false,
-    slug: req.params.slugProduct,
-    status: "active",
-  };
-
-  const product = await Product.findOne(find);
-
-  if (product.product_category_id) {
-    const category = await ProductCategory.findOne({
-      _id: product.product_category_id,
-      status: "active",
+  try {
+    const find = {
       deleted: false,
+      slug: req.params.slugProduct,
+      status: "active",
+    };
+
+    const product = await Product.findOne(find);
+
+    if (product.product_category_id) {
+      const category = await ProductCategory.findOne({
+        _id: product.product_category_id,
+        status: "active",
+        deleted: false,
+      });
+
+      product.category = category;
+    }
+    //hien thi danh gia
+    const reviews = await ProductReview.find({
+      product_slug: req.params.slugProduct,
+      status: "done",
     });
-
-    product.category = category;
+    console.log(reviews);
+    const countReview = await ProductReview.countDocuments({
+      product_slug: req.params.slugProduct,
+      status: "done",
+    });
+    reviews.totalRank = 0;
+    for (const review of reviews) {
+      reviews.totalRank = reviews.totalRank + review.reviewValue;
+      review.createdAtStr = Format.formatDate(review.createdAt);
+    }
+    // console.log(reviews.totalRank);
+    if (countReview) {
+      reviews.TBReview = (reviews.totalRank / countReview).toFixed(2);
+      // console.log(reviews.TBReview);
+    }
+    productsHelper.priceNewProduct(product);
+    // console.log(reviews);
+    res.render("client/pages/products/detail", {
+      pageTitle: product.title,
+      product: product,
+      reviews: reviews,
+    });
+  } catch (error) {
+    req.flash("error", `Sản phẩm không tồn tại`);
+    res.redirect(`/products`);
   }
-  //hien thi danh gia
-  const reviews = await ProductReview.find({
-    product_slug: req.params.slugProduct,
-  });
-  const countReview = await ProductReview.countDocuments({
-    product_slug: req.params.slugProduct,
-  });
-  reviews.totalRank = 0;
-  for (const review of reviews) {
-    reviews.totalRank = reviews.totalRank + review.reviewValue;
-    review.createdAtStr = Format.formatDate(review.createdAt);
-  }
-  // console.log(reviews.totalRank);
-  if (countReview) {
-    reviews.TBReview = (reviews.totalRank / countReview).toFixed(2);
-    // console.log(reviews.TBReview);
-  }
-  productsHelper.priceNewProduct(product);
-  // console.log(reviews);
-  res.render("client/pages/products/detail", {
-    pageTitle: product.title,
-    product: product,
-    reviews: reviews,
-  });
-  // try {
-
-  // } catch (error) {
-  //   req.flash("error", `Sản phẩm không tồn tại`);
-  //   res.redirect(`/products`);
-  // }
 };
 //[GET] /products/:slugCategory
 module.exports.category = async (req, res) => {
@@ -120,22 +122,42 @@ module.exports.review = async (req, res) => {
     status: "active",
   };
   const product = await Product.findOne(find);
-  res.render("client/pages/products/review", {
-    pageTitle: "Đánh giá sản phẩm",
-    product: product,
+  const countReview = await ProductReview.countDocuments({
+    user_id: res.locals.user.id,
+    status: "yet",
   });
+  if (countReview) {
+    res.render("client/pages/products/review", {
+      pageTitle: "Đánh giá sản phẩm",
+      product: product,
+    });
+  } else {
+    req.flash("success", `bạn đã đánh giá sản phẩm này rồi`);
+    res.redirect(`/products`);
+  }
 };
-//[POST] /products/review/:slugProduct
+//[patch] /products/review/:slugProduct
 module.exports.reviewPost = async (req, res) => {
   try {
-    const newReview = new ProductReview({
-      product_slug: req.params.slugProduct,
+    const Review = await ProductReview.findOne({
       user_id: res.locals.user.id,
-      userName: res.locals.user.fullName,
-      reviewMessage: req.body.description,
-      reviewValue: req.body.rank,
+      status: "yet",
     });
-    await newReview.save();
+    // console.log(req.params.slugProduct);
+
+    await ProductReview.updateOne(
+      {
+        user_id: res.locals.user.id,
+      },
+      {
+        product_slug: req.params.slugProduct,
+        user_id: res.locals.user.id,
+        userName: res.locals.user.fullName,
+        reviewMessage: req.body.description,
+        reviewValue: req.body.rank,
+        status: "done",
+      }
+    );
     req.flash("success", `đánh giá thành công`);
     res.redirect(`/products`);
   } catch (error) {

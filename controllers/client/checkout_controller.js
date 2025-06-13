@@ -2,6 +2,7 @@ const Cart = require("../../models/cart.model");
 const Product = require("../../models/product.model");
 const Order = require("../../models/order.model");
 const User = require("../../models/user.model");
+const ProductReview = require("../../models/review_products.model");
 
 const productsHelper = require("../../Helper/product");
 
@@ -111,6 +112,15 @@ module.exports.success = async (req, res) => {
     const item = await Product.findOne({
       _id: product.product_id,
     });
+    const newReview = new ProductReview({
+      product_slug: product.slug,
+      user_id: res.locals.user.id,
+      userName: res.locals.user.fullName,
+      reviewMessage: "",
+      reviewValue: "",
+      status: "yet",
+    });
+    await newReview.save();
     // console.log(item.stock);
     // console.log(product.quantity);
     item.stock = parseInt(item.stock) - parseInt(product.quantity);

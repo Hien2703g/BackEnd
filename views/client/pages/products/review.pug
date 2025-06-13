@@ -6,8 +6,8 @@ block main
     +alert-error(5000)
     +alert-success(5000)
     form(
-        action=`/products/review/${product.slug}?`
-        method="POST"
+
+        action=`/products/review/${product.slug}?_method=PATCH`, method="post"
     )
         div(class="form-group")
             label(for="desc") Mô tả đánh giá:

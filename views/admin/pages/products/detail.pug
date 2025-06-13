@@ -41,6 +41,14 @@ block main
 
         if (product.description)
             div(class="mb-4") Mô tả: !{product.description}
+        if(reviews.length)
+            div(class="mb-4") <b>Đánh giá sản phẩm:</b>
+            div(class="rank mb-3") <b> Rank:</b> #{reviews.TBReview}
+            each review in reviews
+                div(class="rank-box mb-3")
+                    div(class="rank-title") <b>Người đánh giá:</b> #{review.userName}
+                    div(class="rank-content mb-3") !{review.reviewMessage}
+                    div(class="create-date") #{review.createdAtStr}
 
         a(
             class="btn btn-warning"

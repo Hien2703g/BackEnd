@@ -53,7 +53,6 @@ module.exports.detail = async (req, res) => {
       const productInfo = await Product.findOne({
         _id: product.product_id,
       }).select("title thumbnail slug");
-
       product.productInfo = productInfo;
 
       productsHelper.priceNewProduct(product);
