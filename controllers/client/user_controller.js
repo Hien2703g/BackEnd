@@ -15,6 +15,10 @@ module.exports.register = async (req, res) => {
 };
 // [POST] /user/register
 module.exports.registerPost = async (req, res) => {
+  if (req.cookies.tokenUser) {
+    res.clearCookie("tokenUser");
+  }
+  res.clearCookie("cartId");
   const existEmail = await User.findOne({
     email: req.body.email,
     deleted: false,
@@ -99,6 +103,9 @@ module.exports.loginPost = async (req, res) => {
       statusOnline: "online",
     }
   );
+  _io.once("connection", (socket) => {
+    socket.broadcast.emit("SERVER_RETURN_USER_ONLINE", user.id);
+  });
   res.redirect("/");
 };
 
@@ -203,12 +210,8 @@ module.exports.resetPasswordPost = async (req, res) => {
   res.redirect("/");
 };
 
-// [GET] /user/register
+// [GET] /user/info
 module.exports.info = async (req, res) => {
-  if (req.cookies.tokenUser) {
-    res.clearCookie("tokenUser");
-  }
-  res.clearCookie("cartId");
   const tokenUser = req.cookies.tokenUser;
 
   const infoUser = await User.findOne({

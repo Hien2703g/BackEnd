@@ -46,10 +46,13 @@ block main
                             th Tên 
                             th Giá
                             th Số lượng 
-                            th Tổng tiền 
+                            th Tổng tiền
+                            if(order.status == "complete")
+                                th Đánh giá 
                     tbody 
                     if(order.products.length > 0)
                         each item, index  in order.products
+                            //- div #{item}
                             tr 
                                 td #{index + 1}
                                 td 
@@ -58,5 +61,8 @@ block main
                                 td #{item.priceNew}$
                                 td #{item.quantity}
                                 td #{item.totalPrice}$
+                                if(order.status == "complete")
+                                    td 
+                                        a(href=`/products/review/${item.productInfo.slug}?` class="btn btn-primary") Đánh giá 
                 if(order.products.length > 0)
                     h3(class="text-end") Tổng đơn hàng: #{order.totalPrice}$

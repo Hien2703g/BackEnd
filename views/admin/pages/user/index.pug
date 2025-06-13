@@ -57,7 +57,7 @@ block main
                                 td #{index+1}
                                 td
                                     img(
-                                        src=item.avatar
+                                        src=item.avatar? item.avatar:"https://res.cloudinary.com/dyppifz1z/image/upload/v1747908416/bbt0u0sge20rhgmlmwvv.png"
                                         alt=item.fullName
                                         width="100px"
                                         height="auto"
@@ -112,6 +112,9 @@ block main
                                     if (updatedBy)
                                         p #{updatedBy.accountFullName}
                                         +formatDateTime(updatedBy.updatedAt) 
+
+        +Pagitation(pagitation) 
+
         form(
             action=""
             method="POST"

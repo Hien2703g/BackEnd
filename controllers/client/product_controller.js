@@ -2,6 +2,8 @@ const Product = require("../../models/product.model");
 const ProductCategory = require("../../models/product-category.model");
 const productsHelper = require("../../Helper/product");
 const productsCategoryHelper = require("../../Helper/product-category");
+const ProductReview = require("../../models/review_products.model");
+const Format = require("../../Helper/format");
 //[GET] /products
 module.exports.index = async (req, res) => {
   const products = await Product.find({
@@ -26,35 +28,53 @@ module.exports.index = async (req, res) => {
 };
 //[GET] /products/:slug
 module.exports.detail = async (req, res) => {
-  try {
-    const find = {
-      deleted: false,
-      slug: req.params.slugProduct,
+  const find = {
+    deleted: false,
+    slug: req.params.slugProduct,
+    status: "active",
+  };
+
+  const product = await Product.findOne(find);
+
+  if (product.product_category_id) {
+    const category = await ProductCategory.findOne({
+      _id: product.product_category_id,
       status: "active",
-    };
-
-    const product = await Product.findOne(find);
-
-    if (product.product_category_id) {
-      const category = await ProductCategory.findOne({
-        _id: product.product_category_id,
-        status: "active",
-        deleted: false,
-      });
-
-      product.category = category;
-    }
-
-    productsHelper.priceNewProduct(product);
-
-    res.render("client/pages/products/detail", {
-      pageTitle: product.title,
-      product: product,
+      deleted: false,
     });
-  } catch (error) {
-    req.flash("error", `Sản phẩm không tồn tại`);
-    res.redirect(`/products`);
+
+    product.category = category;
   }
+  //hien thi danh gia
+  const reviews = await ProductReview.find({
+    product_slug: req.params.slugProduct,
+  });
+  const countReview = await ProductReview.countDocuments({
+    product_slug: req.params.slugProduct,
+  });
+  reviews.totalRank = 0;
+  for (const review of reviews) {
+    reviews.totalRank = reviews.totalRank + review.reviewValue;
+    review.createdAtStr = Format.formatDate(review.createdAt);
+  }
+  // console.log(reviews.totalRank);
+  if (countReview) {
+    reviews.TBReview = (reviews.totalRank / countReview).toFixed(2);
+    // console.log(reviews.TBReview);
+  }
+  productsHelper.priceNewProduct(product);
+  // console.log(reviews);
+  res.render("client/pages/products/detail", {
+    pageTitle: product.title,
+    product: product,
+    reviews: reviews,
+  });
+  // try {
+
+  // } catch (error) {
+  //   req.flash("error", `Sản phẩm không tồn tại`);
+  //   res.redirect(`/products`);
+  // }
 };
 //[GET] /products/:slugCategory
 module.exports.category = async (req, res) => {
@@ -89,6 +109,37 @@ module.exports.category = async (req, res) => {
     });
   } catch (error) {
     req.flash("error", `Danh muc không tồn tại`);
+    res.redirect(`/products`);
+  }
+};
+//[GET] /products/review/:slugProduct
+module.exports.review = async (req, res) => {
+  const find = {
+    deleted: false,
+    slug: req.params.slugProduct,
+    status: "active",
+  };
+  const product = await Product.findOne(find);
+  res.render("client/pages/products/review", {
+    pageTitle: "Đánh giá sản phẩm",
+    product: product,
+  });
+};
+//[POST] /products/review/:slugProduct
+module.exports.reviewPost = async (req, res) => {
+  try {
+    const newReview = new ProductReview({
+      product_slug: req.params.slugProduct,
+      user_id: res.locals.user.id,
+      userName: res.locals.user.fullName,
+      reviewMessage: req.body.description,
+      reviewValue: req.body.rank,
+    });
+    await newReview.save();
+    req.flash("success", `đánh giá thành công`);
+    res.redirect(`/products`);
+  } catch (error) {
+    req.flash("error", `đánh giá thất bại`);
     res.redirect(`/products`);
   }
 };

@@ -2,6 +2,7 @@ const Article = require("../../models/article.model");
 const Format = require("../../Helper/format");
 const Account = require("../../models/account.model");
 const PagitationHelper = require("../../Helper/pagination");
+const systemConfig = require("../../config/system");
 module.exports.index = async (req, res) => {
   try {
     let find = {

@@ -21,7 +21,7 @@ module.exports.index = async (req, res) => {
       for (const product of record.products) {
         const productInfo = await Product.findOne({
           _id: product.product_id,
-        }).select("title thumbnail");
+        }).select("title thumbnail slug");
         // console.log(productInfo);
         product.productInfo = productInfo;
         // record.product = product;
@@ -52,7 +52,7 @@ module.exports.detail = async (req, res) => {
     for (const product of order.products) {
       const productInfo = await Product.findOne({
         _id: product.product_id,
-      }).select("title thumbnail");
+      }).select("title thumbnail slug");
 
       product.productInfo = productInfo;
 

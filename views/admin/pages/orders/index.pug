@@ -58,6 +58,11 @@ block main
                                     )
                                 td #{index+1}
                                 td #{item.userInfo.fullName}
+                                if(item.UserName)
+                                    td #{item.UserName.fullName}
+                                else 
+                                    td Khách
+
                                 td #{item.userInfo.phone}
                                 td #{item.userInfo.address}
                                 td 

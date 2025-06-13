@@ -1,0 +1,40 @@
+extends ../../layouts/default.pug 
+include ../../mixins/box-head.pug
+include ../../mixins/alert.pug
+block main
+    h1(class="mb-4") #{pateTitle}
+    +alert-error(5000)
+    +alert-success(5000)
+    form(
+        action=`/products/review/${product.slug}?`
+        method="POST"
+    )
+        div(class="form-group")
+            label(for="desc") Mô tả đánh giá:
+            textarea(
+                class="form-control textarea-mce"
+                id="desc"
+                name="description"
+                rows="5"
+            ) 
+        div(class="form-group")
+            label(for="rank") Xếp hạng
+            input(
+                type="number"
+                class="form-control"
+                ip="rank"
+                name="rank"
+                value="5"
+                min="1"
+                max="5"
+                require
+            )       
+        div(class="form-group")
+            button(
+                type="submit"
+                class="btn btn-primary"
+            ) Cập nhật 
+            a(
+                href=`/products`
+                class="btn btn-warning"
+            ) Trở về

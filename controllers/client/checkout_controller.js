@@ -107,7 +107,7 @@ module.exports.success = async (req, res) => {
   for (const product of order.products) {
     const productInfo = await Product.findOne({
       _id: product.product_id,
-    }).select("title thumbnail");
+    }).select("title thumbnail slug");
     const item = await Product.findOne({
       _id: product.product_id,
     });

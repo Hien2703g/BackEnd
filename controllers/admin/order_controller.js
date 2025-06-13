@@ -1,6 +1,7 @@
 const Cart = require("../../models/cart.model");
 const Product = require("../../models/product.model");
 const Order = require("../../models/order.model");
+const User = require("../../models/user.model");
 const filterStatusHelper = require("../../Helper/filterStatus");
 const SearchHelper = require("../../Helper/search");
 const PagitationHelper = require("../../Helper/pagination");
@@ -49,6 +50,14 @@ module.exports.index = async (req, res) => {
       // .sort(sort)
       .limit(objectPagitation.limitItem)
       .skip(objectPagitation.skip);
+    for (const record of records) {
+      if (record.user_id) {
+        UserName = await User.findOne({
+          _id: record.user_id,
+        }).select("fullName");
+        record.UserName = UserName;
+      }
+    }
     for (const record of records) {
       for (const product of record.products) {
         const productInfo = await Product.findOne({
